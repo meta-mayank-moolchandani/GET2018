@@ -1,24 +1,11 @@
 package HexCalulator;
 
-import java.util.*;
-
 public class HexaDecimal {
 	public static void main(String a[]) {
-		Scanner sc = new Scanner(System.in);
 		HexCalc ob = new HexCalc();
 
-		String hexa1 = sc.next().trim();
-
-		hexa1 = hexa1.toUpperCase();
-		String hexa2 = sc.next().trim();
-		hexa2 = hexa2.toLowerCase();
-		if (!ob.isValidate(hexa1)) {
-			System.out.println("invalid hexadecimal number");
-		}
-
-		if (!ob.isValidate(hexa1)) {
-			System.out.println("invalid hexadecimal number");
-		}
+		String hexa1 = inputValidation.isvalidHexa();
+		String hexa2 = inputValidation.isvalidHexa();
 
 		while (true) {
 			int choice;
@@ -33,7 +20,7 @@ public class HexaDecimal {
 			System.out.println("8: exit");
 
 			System.out.println("\nEnter Your Choice: ");
-			choice = sc.nextInt();
+			choice = inputValidation.isInt();
 
 			switch (choice) {
 			case 1:
@@ -68,9 +55,8 @@ public class HexaDecimal {
 
 			case 7:
 				System.out.println("enter numbers: ");
-				int num1,
-				num2;
-				num1 = sc.nextInt();
+				int num1;
+				num1 = inputValidation.isInt();
 				System.out.println(ob.decimalToHexaDecimal(num1 + ""));
 				// System.out.println(ob.decimalToHexaDecimal(hexa1));
 				break;
