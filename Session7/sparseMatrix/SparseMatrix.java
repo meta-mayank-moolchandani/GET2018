@@ -41,7 +41,13 @@ final public class SparseMatrix {
 
 
 	SparseMatrix(int sparse[][],int rows, int columns){
-		this.sparse = sort(sparse);
+		int arr[][] = new int[sparse.length][3];
+		for(int i = 0; i<arr.length; i++){
+			for(int j = 0; j<arr[0].length;j++){
+				arr[i][j] = sparse[i][j];
+			}
+		}
+		this.sparse = sort(arr);
 		this.rows = rows;
 		this.columns = columns;
 		
@@ -49,6 +55,7 @@ final public class SparseMatrix {
 			throw new RuntimeErrorException(null, "Sparse matrix is invalid");
 		}
 	}
+	
 	
 
 /**
