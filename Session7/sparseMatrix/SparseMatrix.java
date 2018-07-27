@@ -1,5 +1,6 @@
 package sparseMatrix;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.management.RuntimeErrorException;
@@ -133,7 +134,6 @@ final public class SparseMatrix {
 					similarCount++;
 				}
 			}
-
 			int addition[][] = new int[matrix3.length - similarCount][3];
 			int additionIndex = 0;
 			for (int matrix3Index = 0; matrix3Index < matrix3.length - 1; matrix3Index++, additionIndex++) {
@@ -153,6 +153,82 @@ final public class SparseMatrix {
 		} else {
 			throw new RuntimeErrorException(null,
 					"ADDITION CAN NOT BE PERFORMED. ORDERS OF MATRIX IS NOT EQUAL");
+		}
+	}
+	
+/**
+ * multiply two sparse matrix
+ * @param sparseMatrix2
+ * @return
+ */  
+	public SparseMatrix multiplySparse(SparseMatrix sparseMatrix2) {
+		int totalRows1 = this.getRows();
+		int totalColumns1 = this.getColumns();
+		int matrix1[][] = this.getSparse();
+
+		int totalRows2 = sparseMatrix2.getRows();
+		int totalColumns2 = sparseMatrix2.getColumns();
+
+		SparseMatrix transpose2 = sparseMatrix2.transpose(); // transpose of
+																// matrix 2
+		int transposMatrix2[][] = transpose2.getSparse();
+
+		ArrayList<int[]> resultList = new ArrayList<int[]>(); 
+
+		if (totalColumns1 == totalRows2) {
+			for (int matrix1Index = 0; matrix1Index < matrix1.length; matrix1Index++) {
+				for (int transposeMatrixIndex = 0; transposeMatrixIndex < transposMatrix2.length; transposeMatrixIndex++) {
+					if (matrix1[matrix1Index][1] == transposMatrix2[transposeMatrixIndex][1]) {
+						int array[] = new int[3];
+						array[0] = matrix1[matrix1Index][0];
+						array[1] = transposMatrix2[transposeMatrixIndex][0];
+						array[2] = transposMatrix2[transposeMatrixIndex][2] * matrix1[matrix1Index][2];
+						resultList.add(array);
+					}
+				}
+			}
+
+			int[][] resultArray = new int[resultList.size()][3];
+
+			for (int i = 0; i < resultArray.length; i++) {
+				resultArray[i] = resultList.get(i);
+			}
+
+			int matrix3[][] = resultArray;
+			int similarCount = 0;
+			for (int index = 0; index < matrix3.length - 1; index++) {
+				if (matrix3[index][0] == matrix3[index + 1][0]
+						&& matrix3[index][1] == matrix3[index + 1][1]) {
+					similarCount++;
+				}
+			}
+
+			int addition[][] = new int[matrix3.length - similarCount][3];
+			int additionIndex = 0;
+			for (int matrix3Index = 0; matrix3Index < matrix3.length - 1; matrix3Index++, additionIndex++) {
+				if (matrix3[matrix3Index][0] == matrix3[matrix3Index + 1][0]
+						&& matrix3[matrix3Index][1] == matrix3[matrix3Index + 1][1]) {
+					addition[additionIndex][0] = matrix3[matrix3Index][0];
+					addition[additionIndex][1] = matrix3[matrix3Index][1];
+					addition[additionIndex][2] = matrix3[matrix3Index][2]
+							+ matrix3[matrix3Index + 1][2];
+					matrix3Index++;
+				} else {
+					addition[additionIndex][0] = matrix3[matrix3Index][0];
+					addition[additionIndex][1] = matrix3[matrix3Index][1];
+					addition[additionIndex][2] = matrix3[matrix3Index][2];
+
+					if (additionIndex == addition.length - 2) {
+						addition[additionIndex + 1][0] = matrix3[matrix3Index + 1][0];
+						addition[additionIndex + 1][1] = matrix3[matrix3Index + 1][1];
+						addition[additionIndex + 1][2] = matrix3[matrix3Index + 1][2];
+
+					}
+				}
+			}
+			return new SparseMatrix(addition, totalRows1, totalColumns2);
+		} else {
+			throw new AssertionError("Multiplication is not possible");
 		}
 	}
 
@@ -216,43 +292,21 @@ final public class SparseMatrix {
 	}
 
 	public static void main(String aa[]) {
-		int a[][] = new int[][] { {0,0,1}, { 0,1,2 }, { 1,0,2 },
-				{ 1, 2, 3 }, { 2, 1, 3 } };
+		int arr1[][]=new int[][]{{0,1,1},{0,2,3},{1,1,2},{1,2,5},{2,0,2}};
+		int arr2[][]= new int[][]{{0,2,1},{1,0,3},{2,0,4},{2,1,1}};
+		SparseMatrix m1 = new SparseMatrix(arr1, 3, 3);
+		SparseMatrix m2 = new SparseMatrix(arr2, 3, 3);
 		
-		SparseMatrix m1 = new SparseMatrix(a, 4, 4);
-/*
+		SparseMatrix m3 = m1.multiplySparse(m2);
+		int arr3[][] = m3.getSparse();
 		
-		
-		SparseMatrix m3 = m1.transpose();
-		int x[][]=m3.getSparse();
-		
-		
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(Arrays.toString(a[i]));
-
+		for(int i = 0; i<arr3.length;i++){
+			System.out.println(Arrays.toString(arr3[i]));
 		}
-		System.out.println();
-		
-			for (int i = 0; i < x.length; i++) {
-		System.out.println(Arrays.toString(x[i]));
-		
-
-	}
-			System.out.println(m1.checkSymmetrical());
-
-		for (int i = 0; i < a.length; i++) {
-			System.out.println(Arrays.toString(a[i]));
-
-		}
-		System.out.println();
-
-		
-		int b[][] = new int[][] { { 0, 1, 3 }, { 0, 3, 4 }, { 1, 3, 5 },
-				{ 2, 2, 6 } };
-		SparseMatrix m2 = new SparseMatrix(b, 10, 10);
 
 
-*/
+
+
 	}
 
 }
