@@ -5,25 +5,27 @@ import animal.*;
 import java.util.*;
 
 public class Cage {
-	public Cage(String cageType, int capacity) {
-		super();
-
-		this.cageType = cageType.toUpperCase();
-		this.capacity = capacity;
-		spareCapacity = capacity;
-		listOfAnimal = new ArrayList<Animal>();
-		setCageCategory();
-		setCageId();
-	}
-	
-
-	void setSpareCapacity() {
-		spareCapacity = capacity - listOfAnimal.size();
-	}
-	
 	private int cageId;
 	private String cageType;
 	private String cageCategory;
+	private int capacity;
+	private int spareCapacity;
+	private List<Animal> listOfAnimal;
+
+	/**
+	 * function set cage category automatically by getting category from animals
+	 * enum
+	 * 
+	 * @param cageCategory
+	 *            the cageCategory to set
+	 */
+	private void setCageCategory() {
+		for (animals animalEnum : animals.values()) {
+			if (cageType.equalsIgnoreCase(animalEnum.getType())) {
+				cageCategory = animalEnum.getCategory();
+			}
+		}
+	}
 
 	/**
 	 * @return the cageCategory
@@ -33,18 +35,16 @@ public class Cage {
 	}
 
 	/**
-	 * @param cageCategory
-	 *            the cageCategory to set
+	 * for setting a unique id of cage
 	 */
-	public void setCageCategory() {
-		for (animals animalEnum : animals.values()) {
-			if (cageType.equalsIgnoreCase(animalEnum.getType())) {
-				cageCategory = animalEnum.getCategory();
-			}
-		}
+	private void setCageId() {
+		double random = Math.random();
+		this.cageId = (int) (random * 1000);
 	}
 
-	private int capacity;
+	public int getCageId() {
+		return this.cageId;
+	}
 
 	/**
 	 * @return the cageType
@@ -53,9 +53,35 @@ public class Cage {
 		return cageType;
 	}
 
-	private int spareCapacity;
-	public List<Animal> listOfAnimal;
+	/**
+	 * constructor for initializing the cageId, cageType
+	 * 
+	 * @param cageType
+	 * @param capacity
+	 */
+	public Cage(String cageType, int capacity) {
+		super();
+		this.cageType = cageType.toUpperCase();
+		this.capacity = capacity;
+		spareCapacity = capacity;
+		listOfAnimal = new ArrayList<Animal>();
+		setCageCategory();
+		setCageId();
+	}
 
+	/**
+	 * spare Capacity is the available capacity in which animal can be allocated
+	 */
+	private void setSpareCapacity() {
+		spareCapacity = capacity - listOfAnimal.size();
+	}
+
+	/**
+	 * checking if a particular animal already exists in the cage
+	 * 
+	 * @param id
+	 * @return
+	 */
 	boolean isAnimalExist(int id) {
 		boolean flag = true;
 		for (Animal x : listOfAnimal) {
@@ -67,6 +93,12 @@ public class Cage {
 		return flag;
 	}
 
+	/**
+	 * adding an animal to cage
+	 * 
+	 * @param animal
+	 * @return true if animal is successfully added
+	 */
 	public boolean addAnimal(Animal animal) {
 		if (animal.type.equalsIgnoreCase(cageType) && spareCapacity > 0
 				&& isAnimalExist(animal.getId())) {
@@ -78,6 +110,12 @@ public class Cage {
 		}
 	}
 
+	/**
+	 * remove an animal from cage
+	 * 
+	 * @param id
+	 * @return true if animal is successfully removed
+	 */
 	public boolean removeAnimal(int id) {
 		boolean flag = true;
 
@@ -90,20 +128,11 @@ public class Cage {
 				index++;
 			}
 			listOfAnimal.remove(index);
-			flag = true;
+			flag = true; // successfully removed
 		} else {
-			flag = false;
+			flag = false; // not removed
 		}
 		return flag;
-	}
-
-	public void setCageId() {
-		double random = Math.random();
-		this.cageId = (int) (random * 1000);
-	}
-
-	public int getCageId() {
-		return this.cageId;
 	}
 
 }

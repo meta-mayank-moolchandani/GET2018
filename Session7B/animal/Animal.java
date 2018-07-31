@@ -22,7 +22,7 @@ public abstract class Animal {
 	}
 
 	public void setId() {
-		double random = Math.random();
+        double random = Math.random();
 		this.id = (int) (random * 1000);
 	}
 
