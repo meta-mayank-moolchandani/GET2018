@@ -85,7 +85,7 @@ public class Screen {
 	 * @param shape
 	 * @return
 	 */
-	public boolean RemoveAllShape(Shape shape) {
+	public boolean RemoveAllShape() {
 		listOfShapes.clear();
 		return (listOfShapes.size() == 0) ? true : false;
 	}
@@ -163,5 +163,5 @@ public class Screen {
 	public List<Shape> sortByTimeStamp() {
 		return getListOfShapes();
 	}
-
+	
 }
