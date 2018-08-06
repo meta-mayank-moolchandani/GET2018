@@ -4,22 +4,9 @@ package circularQueue;
 
 public interface Queue {
 
-    /**
-     * Function to add element in queue
-     * 
-     * @param element
-     */
-    void addElement(int element);
-
-    /**
-     * Function to remove element
-     * 
-     * @param element
-     */
-    void removeElement();
-
+    void enqueue(int element);
+    void dequeue();
     boolean isEmpty();
-
     boolean isFull();
 
 }
