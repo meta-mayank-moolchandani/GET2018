@@ -11,7 +11,8 @@ public class Triangle implements Shape {
 	private int side2;
 	private int side3;
 	private Point startingPoint;
-	private String timeStamp;
+	
+	private long timeStamp;
 
 	public Triangle(Point startingPoint, int side1, int side2, int side3) {
 		this.startingPoint = startingPoint;
@@ -19,13 +20,13 @@ public class Triangle implements Shape {
 		this.side1 = side1;
 		this.side2 = side2;
 		this.side3 = side3;
-		this.timeStamp = (new Date()).toString();
+		this.timeStamp = (new Date()).getTime();
 	}
 
 	/**
 	 * @return the timeStamp
 	 */
-	public String getTimeStamp() {
+	public long getTimeStamp() {
 		return timeStamp;
 	}
 
@@ -55,8 +56,23 @@ public class Triangle implements Shape {
 	}
 
 	@Override
-	public boolean isPointEnclosed(Point point) {
-		return true;
+	public boolean isPointEnclosed(Point pointToBeChecked) {
+		double area = getArea();
+		//Point originTriangle = getOrigin();
+		int height = (int) (area*2/this.side1);
+		int vertex2Y = (int)height + (int)(this.getOrigin().getY_coordinate());
+		int vertex2X = (int) (Math.sqrt((this.side2*this.side2) - (height-(int)(this.getOrigin().getY_coordinate()))*(height-(int)(this.getOrigin().getY_coordinate())))) + (int)(this.getOrigin().getX_coordinate()) ;
+		int vertex3Y = (int)(this.getOrigin().getY_coordinate()) ;
+		int vertex3X = (int)(this.getOrigin().getY_coordinate())+side1;
+		Point vertex2 =new Point(vertex2X,vertex2Y);
+		Point vertex3 =new Point(vertex3X,vertex3Y);
+		
+		if(vertex3.getX_coordinate()>vertex2.getX_coordinate()){
+			return true;
+		}else{
+			return false;
+		}
+		
 	}
 
 }

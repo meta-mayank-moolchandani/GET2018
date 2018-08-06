@@ -10,7 +10,8 @@ public class Polygon implements Shape {
 	private int side;
 	private int numberOfSides;
 	private Point startingPoint;
-	private String timeStamp;
+
+	private long timeStamp;
 
 
 
@@ -18,14 +19,14 @@ public class Polygon implements Shape {
      	this.startingPoint =startingPoint;
 		this.side = side;
 		this.numberOfSides = numberOfSides;
-		this.timeStamp = (new Date()).toString();
+		this.timeStamp = (new Date()).getTime();
 		
 	}
 	
 	/**
 	 * @return the timeStamp
 	 */
-	public String getTimeStamp() {
+	public long getTimeStamp() {
 		return timeStamp;
 	}
 
@@ -53,9 +54,32 @@ public class Polygon implements Shape {
 	}
 
 	@Override
-	public boolean isPointEnclosed(Point point) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isPointEnclosed(Point pointToBeChecked) {
+		Point originPolygon = getOrigin();
+		int halfLengthOfSide = side / 2;
+		int apothem = (int) (side/(2*Math.tan(180/numberOfSides)));
+		int nextStepDistance = (apothem)*(apothem) - (halfLengthOfSide * halfLengthOfSide);
+		if(nextStepDistance < 0)
+		{
+			nextStepDistance = - nextStepDistance;
+		}
+		int lengthOfMedian = (int) Math.sqrt(nextStepDistance); 
+		System.out.println(lengthOfMedian);
+		int originPoint = (int)this.getOrigin().getX_coordinate();
+		int centerOfPolygonX = (int)this.getOrigin().getX_coordinate() + halfLengthOfSide;
+		int centerOfPolygonY = (int)this.getOrigin().getY_coordinate() + lengthOfMedian;
+		System.out.println("Center  "+centerOfPolygonX+" "+centerOfPolygonY);
+		int AreaOfCircleEnclosingPolygon = (int)3.14 * lengthOfMedian *lengthOfMedian ;
+		int distanceOfOriginAndPointEnclosed = (int) Math.sqrt((pointToBeChecked.getY_coordinate() - centerOfPolygonY) *(pointToBeChecked.getY_coordinate() - centerOfPolygonY) + (pointToBeChecked.getX_coordinate() - centerOfPolygonX) *(pointToBeChecked.getX_coordinate() - centerOfPolygonX) );
+		int AreaOfCircleEnclosingPoint = (int)3.14 * (distanceOfOriginAndPointEnclosed) * (distanceOfOriginAndPointEnclosed);
+		if(AreaOfCircleEnclosingPolygon > AreaOfCircleEnclosingPoint)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 	}
 
 }

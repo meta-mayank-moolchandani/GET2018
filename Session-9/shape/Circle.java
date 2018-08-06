@@ -8,20 +8,20 @@ public class Circle implements Shape {
 	final private String name = "Circle";
 	final private double PI = 3.1415;
     
-	private String timeStamp;
+	private long timeStamp;
 	private Point center;
 	private int radius;
 
 	public Circle(Point center, int radius) {
 		this.radius = radius;
 		this.center = center;
-		this.timeStamp = (new Date()).toString();
+		this.timeStamp = (new Date()).getTime();
 	}
 
 	/**
 	 * @return the timeStamp
 	 */
-	public String getTimeStamp() {
+	public long getTimeStamp() {
 		return timeStamp;
 	}
 

@@ -9,18 +9,18 @@ public class Square implements Shape {
 	final private String name = "Square";
 	private Point startingPoint;
 	private int side;
-	private String timeStamp;
+	private long timeStamp;
 
 	public Square(Point strtingPoint, int side) {
 		this.startingPoint = strtingPoint;
 		this.side = side;
-		this.timeStamp = (new Date()).toString();
+		this.timeStamp = (new Date()).getTime();
 	}
 
 	/**
 	 * @return the timeStamp
 	 */
-	public String getTimeStamp() {
+	public long getTimeStamp() {
 		return timeStamp;
 	}
 

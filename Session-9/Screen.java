@@ -56,6 +56,7 @@ public class Screen {
 		boolean flag = false;
 
 		if (isPointOnScreen(shape.getOrigin())) {
+			
 			flag = listOfShapes.add(shape);
 		} else {
 			flag = false;
@@ -160,8 +161,40 @@ public class Screen {
 		return index;
 	}
 
+	/**
+	 * sorting list by parimeter
+	 * 
+	 * @return
+	 */
 	public List<Shape> sortByTimeStamp() {
-		return getListOfShapes();
+		List<Shape> shapeList = getListOfShapes();
+		List<Shape> sortedShapeList = new ArrayList<Shape>();
+
+		while (shapeList.size() != 0) {
+			int minIndex = findMinimumTimeStampIndex(shapeList);
+			sortedShapeList.add(shapeList.get(minIndex));
+			shapeList.remove(minIndex);
+		}
+		return sortedShapeList;
 	}
+
+	/**
+	 * finding the maximum index from the list which has mimimum perimeter
+	 * 
+	 * @param list
+	 * @return
+	 */
+	private int findMinimumTimeStampIndex(List<Shape> list) {
+		double min = list.get(0).getPerimeter();
+		int index = 0;
+		for (int i = 0; i < list.size(); i++) {
+			if (min >= list.get(i).getPerimeter()) {
+				min = list.get(i).getPerimeter();
+				index = i;
+			}
+		}
+		return index;
+	}
+
 	
 }

@@ -9,19 +9,19 @@ public class Rectangle implements Shape {
 	private Point startingPoint;
 	private int height;
 	private int width;
-	private String timeStamp;
+	private long timeStamp;
 
 	public Rectangle(Point startingPoint, int height, int width) {
 		this.startingPoint = startingPoint;
 		this.height = height;
 		this.width = width;
-		this.timeStamp = (new Date()).toString();
+		this.timeStamp = (new Date()).getTime();
 	}
 
 	/**
 	 * @return the timeStamp
 	 */
-	public String getTimeStamp() {
+	public long getTimeStamp() {
 		return timeStamp;
 	}
 
