@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.json.simple.parser.ParseException;
 import org.junit.Before;
@@ -12,8 +13,9 @@ import org.junit.Test;
 import dictionary.Dictionary;
 import dictionary.DictionaryTree;
 import dictionary.JsonInputList;
+import dictionary.KeyValuePair;
 
-public class TestGetValueMethod {
+public class TestSorting {
 
 	Dictionary dictionary;
 
@@ -26,14 +28,15 @@ public class TestGetValueMethod {
 	}
 
 	@Test
-	public void testAddMethod() {
-	    dictionary.add(100, "hey");
-		String actualResult = dictionary.getValue(100);
-		assertEquals("no similar key exist elemet added successfully","hey", actualResult);
+	public void testSortMethod() {
+		int [] sortedKeyList = new int[dictionary.getSortedListOfKeyValuePair().size()];
+		int index =0;
+		for(KeyValuePair pair:dictionary.getSortedListOfKeyValuePair() ){
+			sortedKeyList[index] = pair.getKey();
+			index++;
+		}
+		int actualResult[] = new int[]{1, 3, 5, 7, 9, 12, 13, 15, 17};
+		assertArrayEquals("sorted list",sortedKeyList, actualResult);
 	}
 
-	@Test
-	public void test2AddMethod() {
-	    assertEquals("NO SUCH DATA EXIST IN MAP ERROR: null", dictionary.getValue(5000));
-	  }
-	}
+}

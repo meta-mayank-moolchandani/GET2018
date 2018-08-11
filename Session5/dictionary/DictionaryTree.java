@@ -1,10 +1,15 @@
 package dictionary;
 
+
 import java.util.*;
 
 public class DictionaryTree implements Dictionary{
 	private Node RootNode;
 
+/**
+ * constructor for initializing the binary tree	
+ * @param listOfInitialInput input list
+ */
 	public DictionaryTree(List<KeyValuePair> listOfInitialInput) {
 		this.RootNode = null;
 		for (KeyValuePair pair : listOfInitialInput) {
@@ -12,6 +17,9 @@ public class DictionaryTree implements Dictionary{
 		}
 	}
 
+/**
+ * adding key value pair to binary tree	
+ */
 	@Override
 	public boolean add(int key, String value) {
 		Node newNode = new Node(new KeyValuePair(key, value));
@@ -51,92 +59,180 @@ public class DictionaryTree implements Dictionary{
 		return flag;
 	}
 
+/**
+ * deleting key from binary tree	
+ */
 	@Override
 	public boolean delete(int key) {
-		if(deleteNode(RootNode, key)==null){
-			return true;
+		boolean isNodeDeletedFlag = false;
+		if(isNodeExist(key)){
+			Node currentNode = RootNode;
+		    
+			RootNode = deleteNode(currentNode,key);
+			isNodeDeletedFlag = true;
+
 		}
-		
-		return false;
+		return isNodeDeletedFlag;
 	}
-	
-	private Node deleteNode(Node currentRootNode, int key) {
-		Node parentNode = null;
-		Node currentNode = currentRootNode;
-
-		// currentNode location of node
-		while (currentNode != null && currentNode.getData().getKey() != key) {
-			parentNode = currentNode;
-
-			if (key < currentNode.getData().getKey()) {
-				currentNode = currentNode.getLeftNode();
-			} else {
-				currentNode = currentNode.getRightNode();
-			}
+/**
+ * getting the parentNode of key 	
+ * @param currentNode
+ * @param key
+ * @return
+ */
+	private Node getParentNode(Node currentNode,int key){
+		Node parentNode = currentNode;
+		if(parentNode.getData().getKey()==key){
+			return null;
 		}
-
-		//System.out.println("curr" + currentNode.getData().getKey());
-		//System.out.println("par" + parentNode.getData().getKey());
-
-
-		// case1:delete leaf node
-
-		if (currentNode.getLeftNode() == null
-				&& currentNode.getRightNode() == null) {
-			if (currentNode != currentRootNode) {
-				if (parentNode.getLeftNode() == currentNode) {
-					parentNode.setLeftNode(null);
-				} else {
-					parentNode.setRightNode(null);
+		
+		while(true){
+			if(key>parentNode.getData().getKey()){
+				if(parentNode.getRightNode().getData().getKey()==key){
+					break;
+				}else{
+					parentNode = parentNode.getRightNode();
 				}
-			} else {
-				currentNode = null;
-			}
-		} else {
-			currentRootNode = null;
-		}
-		
-		//case2 delete Node which has only one child
-		if (currentNode != RootNode) {
-			if (currentNode.getLeftNode() == null
-					&& currentNode.getRightNode() != null) {
-				parentNode.setLeftNode(currentNode.getRightNode());
-			}
-
-			if (currentNode.getRightNode() == null
-					&& currentNode.getLeftNode() != null) {
-				parentNode.setRightNode(currentNode.getLeftNode());
-			}
-		} else {
-			currentNode = null;
-		}
-		
-		//case3 delete Node which has 2 childs
-		
-		if(currentNode!=null){
-			if(currentNode.getLeftNode()!=null && currentNode.getRightNode()!=null){
-				Node node = getMinimumKey(currentNode);
-				int val = node.getData().getKey();
-				deleteNode(RootNode,node.getData().getKey());
-				currentNode.getData().setKey(val);
+			}else{
+				if(parentNode.getLeftNode().getData().getKey()==key){
+					break;
+				}else{
+					parentNode = parentNode.getLeftNode();
+				}
 				
 			}
-		}	
-		return null;
+		}
+		return parentNode;
+	}
+
+/**
+ * getting the current node address of the key 	
+ * @param currentNode
+ * @param key
+ * @return
+ */
+	private Node getCurrentNode(Node currentNode,int key){
+		
+		Node parentNode = getParentNode(currentNode,key);
+		if(parentNode==null){
+			return currentNode;
+		}
+		Node tempNode = null;
+		if(parentNode.getRightNode()!=null && parentNode.getRightNode().getData().getKey()==key){
+			tempNode = parentNode.getRightNode();
+		}else if(parentNode.getLeftNode()!=null && parentNode.getLeftNode().getData().getKey()==key){
+			tempNode = parentNode.getLeftNode();
+		}
+		return tempNode;
 	}
 	
-	private Node getMinimumKey(Node currentNode){
-		while(currentNode!=null){
+/**
+ * helper method for
+ * deleting the node from the tree	
+ * @param RootNode
+ * @param key
+ * @return
+ */
+	private Node deleteNode(Node RootNode, int key) {
+		// if tree is empty
+		if (RootNode == null) {
+			return null;
+		}
+
+		Node parentNode = getParentNode(RootNode,key);
+		Node currentNode = getCurrentNode(RootNode,key);
+
+		// case 1: node which is deleting has no child
+		if (currentNode.getLeftNode() == null
+				&& currentNode.getRightNode() == null) {
+			if (currentNode != RootNode) {
+				if (parentNode.getRightNode() == currentNode) {
+					parentNode.setRightNode(null);
+				} else if (parentNode.getLeftNode() == currentNode) {
+					parentNode.setLeftNode(null);
+				}
+			} else {
+				RootNode = null;
+			}
+		}
+
+		// case 2: node which is deleting has two children
+
+		else if (currentNode.getLeftNode() != null
+				&& currentNode.getRightNode() != null) {
+			Node successor = getMinimumKeyNode(currentNode.getRightNode());
+			currentNode.setData(successor.getData());
+		    currentNode = deleteNode(currentNode.getRightNode(),successor.getData().getKey());
+		}
+		// node to be deleted has only one child
+		else {
+			Node childOfCurrentNode = currentNode.getLeftNode() == null ? currentNode
+					.getRightNode() : currentNode.getLeftNode();
+
+			if (currentNode != RootNode) {
+				if (parentNode.getLeftNode() == currentNode) {
+					parentNode.setLeftNode(childOfCurrentNode);
+				} else {
+					parentNode.setRightNode(childOfCurrentNode);
+				}
+			} else {
+				RootNode = childOfCurrentNode;
+				return RootNode;
+			}
+		}
+		return RootNode;
+
+	}
+
+/**
+ * getting the minimum key value node from the subtree	
+ * @param currentNode
+ * @return
+ */
+	private Node getMinimumKeyNode(Node currentNode){
+		while(currentNode.getLeftNode()!=null){
 			currentNode = currentNode.getLeftNode();
 		}
 		return currentNode;
 	}
 
+/**
+ * checking id=f key exist or not in current binary tree	
+ * @param key
+ * @return
+ */
+	private boolean isNodeExist(int key){
+		boolean isNodeFoundFlag = false;
+		Node currentNode = RootNode;
+		while(currentNode!=null){
+			
+			if(key>currentNode.getData().getKey()){
+				currentNode = currentNode.getRightNode();
+			}else if(key<currentNode.getData().getKey()){
+				currentNode = currentNode.getLeftNode();
+			}else{
+				isNodeFoundFlag = true;
+				break;
+			}
+		}
+		return isNodeFoundFlag;
+	}
+	
+
+/**
+ * getting value from the binary tree;	
+ */
 	@Override
 	public String getValue(int key) {
 		return getValueOfKey(RootNode,key);
 	}
-	
+
+/**	
+ * helper method which returns the string value of current key value
+ * @param currentNode
+ * @param key
+ * @return
+ */
 	private String getValueOfKey(Node currentNode, int key){
 		String valueCorrespondingSpecifiedKey = "";
 		try{
@@ -155,13 +251,21 @@ public class DictionaryTree implements Dictionary{
 		}
 	}
 
+/**
+ * getting sorted list of binary tree through in order traversal	
+ */
 	@Override
 	public List<KeyValuePair> getSortedListOfKeyValuePair() {
 		List<KeyValuePair> sortedList = new ArrayList<KeyValuePair>();
 		getSortedList(RootNode,sortedList);
 		return sortedList;
 	}
-	
+
+/**
+ * helper method for getting the sorted list
+ * @param currentNode
+ * @param sortedList
+ */
 	private void getSortedList(Node currentNode, List<KeyValuePair> sortedList){
 		if(currentNode!=null){
           	getSortedList(currentNode.getLeftNode(), sortedList);
@@ -170,6 +274,11 @@ public class DictionaryTree implements Dictionary{
 		}
 	}
 
+	/**
+	 * getting the sorted list into the key range 	
+	 * @param currentNode
+	 * @param sortedList
+	 */
 	@Override
 	public List<KeyValuePair> getSortedListOfKeyValuePairInRange(int key1,
 			int key2) {

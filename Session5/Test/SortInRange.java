@@ -12,9 +12,9 @@ import org.junit.Test;
 import dictionary.Dictionary;
 import dictionary.DictionaryTree;
 import dictionary.JsonInputList;
+import dictionary.KeyValuePair;
 
-public class TestGetValueMethod {
-
+public class SortInRange {
 	Dictionary dictionary;
 
 	@Before
@@ -26,14 +26,15 @@ public class TestGetValueMethod {
 	}
 
 	@Test
-	public void testAddMethod() {
-	    dictionary.add(100, "hey");
-		String actualResult = dictionary.getValue(100);
-		assertEquals("no similar key exist elemet added successfully","hey", actualResult);
+	public void testSortMethod() {
+		int [] sortedKeyList = new int[dictionary.getSortedListOfKeyValuePairInRange(3, 13).size()];
+		int index =0;
+		for(KeyValuePair pair:dictionary.getSortedListOfKeyValuePairInRange(3,13) ){
+			sortedKeyList[index] = pair.getKey();
+			index++;
+		}
+		int actualResult[] = new int[]{3, 5, 7, 9, 12, 13};
+		assertArrayEquals("sorted list",sortedKeyList, actualResult);
 	}
 
-	@Test
-	public void test2AddMethod() {
-	    assertEquals("NO SUCH DATA EXIST IN MAP ERROR: null", dictionary.getValue(5000));
-	  }
-	}
+}

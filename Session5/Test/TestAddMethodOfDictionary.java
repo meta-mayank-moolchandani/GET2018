@@ -19,7 +19,7 @@ public class TestAddMethodOfDictionary {
 			IOException, ParseException {
 		dictionary = new DictionaryTree(
 				JsonInputList
-						.takeInput("D:\\GETt\\DS-Assignment5\\src\\jsonFileInput\\inputFile.json"));
+						.takeInput("E:\\eclipse workspace\\Ds-Assignment5\\src\\jsonFileInput\\inputFile.json"));
 	}
 
 	@Test

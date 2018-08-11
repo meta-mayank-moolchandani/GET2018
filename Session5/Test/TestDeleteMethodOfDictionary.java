@@ -22,20 +22,34 @@ public class TestDeleteMethodOfDictionary {
 			IOException, ParseException {
 		dictionary = new DictionaryTree(
 				JsonInputList
-						.takeInput("D:\\GETt\\DS-Assignment5\\src\\jsonFileInput\\inputFile.json"));
+						.takeInput("E:\\eclipse workspace\\Ds-Assignment5\\src\\jsonFileInput\\inputFile.json"));
 	}
 
 	@Test
-	public void testDeleteMethodForLeafNode() {
-		boolean isDeleteFlag = dictionary.delete(17);
-		assertEquals("no similar key exist elemet added successfully",true, isDeleteFlag);
+	public void testDeleteMethodForElementWhichDoesNotExistInTree() {
+		boolean isDeleteFlag = dictionary.delete(200);
+		assertEquals("can not be delete element is not present in tree ",false, isDeleteFlag);
 	}
 
 	@Test
-	public void test2DeleteNodeWhichHave2Child() {
+	public void test2DeleteNodeWhichHave1Child() {
 		boolean isDeleteFlag = dictionary.delete(1);
 		
-		assertEquals("two same keys can not be added" , true, isDeleteFlag);
+		assertEquals("node deleted" , true, isDeleteFlag);
 	}
+	
+	@Test
+	public void test2DeleteNodeWhichHave2Child() {
+		boolean isDeleteFlag = dictionary.delete(12);
+		assertEquals("node deleted" , true, isDeleteFlag);
+	}
+	
+	@Test
+	public void test2DeleteNodeWhichHaveNoChild() {
+		boolean isDeleteFlag = dictionary.delete(9);
+		assertEquals("node deleted" , true, isDeleteFlag);
+	}
+
+
 
 }

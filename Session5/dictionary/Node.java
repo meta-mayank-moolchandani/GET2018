@@ -11,6 +11,12 @@ public class Node {
 		this.rightNode = null;
 	}
 	
+	public void setData(KeyValuePair data) {
+		this.data = data;
+	}
+
+
+	
 	/**
 	 * @return the data
 	 */
