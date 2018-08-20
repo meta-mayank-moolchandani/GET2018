@@ -1,6 +1,8 @@
-#q1
 use storefront;
 
+/*
+creating average function for calculating the average of sum 
+*/
 DELIMITER $$
 CREATE FUNCTION average(Sum INT)
     RETURNS FLOAT
@@ -9,8 +11,11 @@ RETURN(Sum/30);
 END$$
 DELIMITER $$;
 
+/*
+1)Create a Stored procedure to retrieve average sales of each product in a month. 
+Month and year will be input parameter to function.
+*/
 DELIMITER $$
-
 CREATE PROCEDURE getAverageSale
 (
     IN  Month INT,
@@ -35,11 +40,14 @@ ORDER BY PRODUCTS_ORDERS.ProductID;
 END $$;
 DELIMITER $$;
  
-
 CALL getAverageSale(12,2018);
+DROP PROCEDURE getAverageSale;
 
 #q4
 
+/*
+creating a function for validating the date
+*/
 DELIMITER $$ 
    CREATE FUNCTION validate_date(start_date Date,end_date Date)
    RETURNS Date
@@ -56,7 +64,14 @@ DELIMITER $$
            
        END if;
    END$$
- 
+ DELIMITER $$; 
+/*
+2) Create a stored procedure to retrieve table having order detail with status for a given period. 
+Start date and end date will be input parameter. 
+Put validation on input dates like start date is less than end date. 
+If start date is greater than end date take first date of month as start date.
+
+*/
 DELIMITER $$ 
 CREATE PROCEDURE getOrder(
 IN StartDate Date , 
@@ -78,7 +93,5 @@ WHERE
     ORDERS.PlacedDate BETWEEN startDate AND lastDate;
 END $$
 DELIMITER $$;
-
-
 
 CALL getOrder('2018-08-12','2018-12-12');
