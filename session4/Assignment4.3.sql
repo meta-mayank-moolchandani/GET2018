@@ -1,20 +1,44 @@
-#inddexing from products
+USE StoreFront;
 
-ALTER TABLE PRODUCTS ADD INDEX Product_Index(ProductID);
-SHOW Index FROM PRODUCTS;
+SHOW TABLES;
 
-#indexing from category
+#CATEGORIES
+#Creating ParentCategory in CATEGORIES As Index.
+DESCRIBE CATEGORIES;
 
-ALTER TABLE CATEGORIES ADD INDEX Category_Index(CategoryID);
-SHOW Index FROM CATEGORIES;
+CREATE INDEX ParentCategoryIndex
+ON CATEGORIES (ParentCategory);
+
+DESCRIBE CATEGORIES;
 
 
-#indexing from product_category
+#PRODUCTS
+#Creating BrandName in PRODUCTS As INDEX
+DESCRIBE PRODUCTS;
 
-ALTER TABLE PRODUCTS_CATEGORIES ADD INDEX Product_Categories_Index(CategoryID);
-SHOW Index FROM PRODUCTS_CATEGORIES ;
+CREATE INDEX ProductBrandIndex
+ON PRODUCTS (Brand);
 
-#indexing in order table
-ALTER TABLE ORDERS ADD INDEX Order_Index(OrderID);
-SHOW Index FROM ORDERS ;
+#Creating BrandName in PRODUCTS As INDEX
+CREATE INDEX ProductNameIndex
+ON PRODUCTS (Name);
 
+DESCRIBE PRODUCTS;
+
+
+#ORDERS
+#Creating UserID as INDEX IN ORDERS table
+DESCRIBE ORDERS;
+
+CREATE INDEX UserIDIndex
+ON ORDERS(UserID);
+
+#Creating AddressID as INDEX IN ORDERS table
+CREATE INDEX AddressIDIndex
+ON ORDERS(AddressID);
+
+#Creating PlacedDate as INDEX IN ORDERS table
+CREATE INDEX PlacedDateIndex
+ON ORDERS(PlacedDate);
+
+DESCRIBE ORDERS;
