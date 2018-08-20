@@ -1,6 +1,10 @@
 use storefront;
 
-#Q1
+/*
+1:Function to calculate number of orders in a month.
+Month and year will be input parameter to function.
+*/
+
 DELIMITER $$
 CREATE FUNCTION getOrders (Month INT, Year INT)
   RETURNS INT
@@ -16,7 +20,10 @@ DELIMITER $$;
 
 select getOrders(12,2018);
 
-#q2
+/*
+2. function to return month in a year having maximum orders. 
+Year will be input parameter.
+*/
 
 DELIMITER $$
 CREATE FUNCTION getMaximumOrderMonth(Year INT)
