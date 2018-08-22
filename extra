@@ -1,0 +1,102 @@
+SET SQL_SAFE_UPDATES = 0;
+SET FOREIGN_KEY_CHECKS = 0;
+
+
+DELETE FROM PRODUCTS WHERE PRODUCTS.ProductID IN 
+(SELECT DISTINCT PRODUCTS_ORDERS.ProductID FROM PRODUCTS_ORDERS 
+LEFT JOIN ORDERS
+ON
+PRODUCTS_ORDERS.OrderID = ORDERS.OrderID
+WHERE ORDERS.PlacedDate BETWEEN (CURRENT_DATE - INTERVAL 3 MONTH) AND (CURRENT_DATE) 
+); 
+
+SELECT * from products where productID = 31;
+
+select * from categories;
+
+select *from categories;
+
+SELECT 
+    t.parent_type, COUNT(t.childId) AS Total_Childs
+FROM
+    (SELECT 
+        c1.CategoryID AS childId,
+            c1.Type AS childType,
+            c2.CategoryID AS parentId,
+            c2.type as parent_type
+    FROM
+        CATEGORIES c1
+    LEFT JOIN CATEGORies c2 ON c1.ParentCategory = c2.CategoryId) as t
+WHERE
+    t.parentId IN (Select 
+        CategoryID
+    FROM
+        Categories
+    WHERE
+        ParentCategory = 0)
+GROUP BY t.parentId
+ORDER BY t.parent_type;
+
+select * from images;
+describe Images;
+INSERT INTO IMAGES(ImageURL,ImageName,ProductID) VALUES("s","s",101);
+
+use storefront;
+
+select *from products;
+
+update products set IsActive = 1 
+WHERE 1; 
+
+truncate table products;
+
+drop database storefront;
+
+UPDATE PRODUCTS SET PRODUCTS.IsActive = 0 WHERE PRODUCTS.ProductID NOT IN (SELECT DISTINCT PRODUCTS_ORDERS.ProductID FROM PRODUCTS_ORDERS LEFT JOIN ORDERS ON PRODUCTS_ORDERS.OrderID = ORDERS.OrderID WHERE ORDERS.PlacedDate BETWEEN (CURRENT_DATE - INTERVAL 1 YEAR) AND (CURRENT_DATE) );
+
+
+update categories SET ParentCategory = null where ParentCategory = 0;
+ALTER TABLE categories 
+ADD constraint FOREIGN KEY(ParentCategory) REFERENCES Categories(CategoryID);
+select * from categories;
+
+create TABLE NayaCategory(
+        category_id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(20) NOT NULL,
+        lft INT NOT NULL,
+        rgt INT NOT NULL
+); 
+
+INSERT INTO NayaCategory VALUES(1,'ELECTRONICS',1,20),(2,'TELEVISIONS',2,9),(3,'TUBE',3,4),
+ (4,'LCD',5,6),(5,'PLASMA',7,8),(6,'PORTABLE ELECTRONICS',10,19),(7,'MP3 PLAYERS',11,14),(8,'FLASH',12,13),
+ (9,'CD PLAYERS',15,16),(10,'2 WAY RADIOS',17,18);
+
+select * from nayacategory;
+
+
+select name from nayacategory where rgt = lft + 1;
+
+
+drop function countChild;
+
+DELIMITER $$
+CREATE FUNCTION countChild(nameee varchar(100))
+RETURNS INT
+BEGIN
+RETURN(select (count(name)-1) as child_of_electronics from nayaCategory where lft between 
+(select lft from nayacategory where name LIKE nameee) 
+AND (select rgt from nayacategory where name LIKE nameee)
+);
+END$$
+DELIMITER $$;
+
+
+select 
+    name, countChild(nayacategory.name) as totalChilds
+from
+    nayacategory
+group by nayacategory.name
+order by totalChilds desc;
+
+select *from categories;
+
