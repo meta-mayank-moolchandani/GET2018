@@ -8,9 +8,9 @@ public interface Dao<T> {
 	public boolean insert(T t);
 
 	public List<T> get(String firstName, String lastName);
-	
+
 	public T get(String email);
-	
+
 	public boolean update(T t);
 
 }

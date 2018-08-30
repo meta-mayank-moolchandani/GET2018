@@ -19,17 +19,18 @@ import com.dao.Employee;
 
 public class ShowAllEmployees extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ShowAllEmployees() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ShowAllEmployees() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -41,15 +42,22 @@ public class ShowAllEmployees extends HttpServlet {
 
 		Dao<Employee> empDao = new EmpDao();
 		List<Employee> listOfEmployee = empDao.getAll();
-		
+
 		out.println("<h1 align = 'center'>Details of Employee </h1>");
 
 		out.println("<table border = 'solid' align = 'center'><th>Name</th><th>Email</th><th>Age</th>");
 
 		for (Employee emp : listOfEmployee) {
-			out.println("<tr><td>" + emp.getFirstName() + emp.getLastName()
-					+ "</td><td>" + emp.getEmail() + "</td><td>" + emp.getAge()
-					+ "</td><td><a href = 'UpdateEmployee?email="+emp.getEmail()+ "'><input type = 'button' value = 'update'></a></td></tr>");
+			out.println("<tr><td>"
+					+ emp.getFirstName()+" "
+					+ emp.getLastName()
+					+ "</td><td>"
+					+ emp.getEmail()
+					+ "</td><td>"
+					+ emp.getAge()
+					+ "</td><td><a href = 'UpdateEmployee?email="
+					+ emp.getEmail()
+					+ "'><input type = 'button' value = 'update'></a></td></tr>");
 		}
 
 		out.println("</table>");
@@ -57,9 +65,11 @@ public class ShowAllEmployees extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 

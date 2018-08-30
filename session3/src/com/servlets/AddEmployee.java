@@ -45,7 +45,7 @@ public class AddEmployee extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Employee employee = new Employee(firstName, lastName, email,
 				Integer.parseInt(age));
-		Dao<Employee>empDao = new EmpDao();
+		Dao<Employee> empDao = new EmpDao();
 		boolean isEmployeeAddedflag = empDao.insert(employee);
 
 		if (isEmployeeAddedflag) {

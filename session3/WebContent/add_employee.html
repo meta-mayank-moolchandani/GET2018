@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src = ./js/valid.js></script>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 
-	<form action = 'AddEmployee'>
+	<form action = 'AddEmployee' id = 'add_employee'>
 		<table>
 			<tr>
 				<td>First Name:</td>
 				<td><input type='text' name='first_name' id = 'first_name'
-					placeholder='enter first name' required></td>
+					placeholder='enter first name' required='required'></td>
 			</tr>
 			<tr>
 				<td>Last Name:</td>
 				<td><input type='text' name='last_name' id = 'last_name'
-					placeholder='enter last name' required></td>
+					placeholder='enter last name' required='required'></td>
 			</tr>
 
 			<tr>
 				<td>email:</td>
 				<td><input type='email' id='email' placeholder='enter email' name= 'email'
-					required></td>
+					required = 'required'></td>
 			</tr>
 
 			<tr>
 				<td>age:</td>
 				<td><input type='text' id='age' placeholder='enter age' name= 'age'
-					required></td>
+					required='required'></td>
 			</tr>
 
 			<tr>
-				<td><input type='submit' value='submit'></td>
+				<td><input type='button' value='submit' onclick = 'checkValid()'></td>
 			</tr>
 
 
