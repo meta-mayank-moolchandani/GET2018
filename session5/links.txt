@@ -1,0 +1,41 @@
+---------getAllAdvertisment----
+http://localhost:8080/Session5RestApi/rest/AdvertismentResources/getAllAdvertisment
+
+
+
+---insertAdvertisment---
+http://localhost:8080/Session5RestApi/rest/AdvertismentResources/insertAdvertisment
+
+    {
+        "advertismentTitle": "z1",
+        "advertismentDescription": "desZ1",
+        "categoryId": 4,
+        "id": 8
+    }
+
+----------update--------
+http://localhost:8080/Session5RestApi/rest/AdvertismentResources/updateAdvertisment	
+	    {
+        "advertismentTitle": "z1",
+        "advertismentDescription": "desZ1",
+        "categoryId": 4,
+        "id": 8
+    }
+------------getByCategoryId----------
+http://localhost:8080/Session5RestApi/rest/AdvertismentResources/getAdvertismentByCategory/2
+
+----------deleteAdvertisment-----------
+http://localhost:8080/Session5RestApi/rest/AdvertismentResources/deleteAdvertisment/8
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
