@@ -16,7 +16,7 @@ create table employee(
  password VARCHAR(100) DEFAULT "abcd",
  enabled BOOLEAN DEFAULT true
 );
- 
+
 CREATE TABLE job_title_master(
  job_id INT AUTO_INCREMENT PRIMARY KEY ,
  job_title VARCHAR(100) NOT NULL
@@ -74,3 +74,29 @@ CREATE TABLE job_details(
   FOREIGN KEY (team_lead) REFERENCES Employee(emp_code),
   FOREIGN KEY (curr_proj_id) REFERENCES project(project_id)
 );
+
+
+
+SELECT * FROM employee;
+INSERT INTO `employee_portal`.`employee` (`emp_code`, `first_name`, `last_name`, `dob`, `gender`, `primary_contact_number`, `secondary_contact_number`, `email_id`, `password`, `enabled`) VALUES ('E18/0000', 'dummy', 'dummy', '1997-08-12', 'M', '123', '123', 'a@b.com', 'abcd', true);
+INSERT INTO `employee_portal`.`employee` (`emp_code`, `first_name`, `last_name`, `dob`, `gender`, `primary_contact_number`, `secondary_contact_number`, `email_id`, `password`, `enabled`) VALUES ('E18/0001', 'dummy1', 'dummy1', '1997-08-12', 'F', '123', '123', 'a2@bb.com', 'abcd', true);
+
+
+
+SELECT * FROM job_title_master;
+INSERT INTO `employee_portal`.`job_title_master` (`job_id`, `job_title`) VALUES (1, 'GET-Trainee');
+INSERT INTO `employee_portal`.`job_title_master` (`job_id`, `job_title`) VALUES (2, 'Team Leader');
+INSERT INTO `employee_portal`.`job_title_master` (`job_id`, `job_title`) VALUES (3, 'Manager');
+
+
+SELECT *FROM project;
+INSERT INTO `employee_portal`.`project` (`project_id`, `project_name`, `project_description`, `start_date`, `end_date`) VALUES (1, 'Training', 'abc', '2018-12-12', '2019-12-12');
+
+select * from job_details;
+INSERT INTO `employee_portal`.`job_details` (`job_detail_id`, `emp_code`, `job_code`, `curr_proj_id`) VALUES (1, 'E18/0000', 2, 1);
+
+INSERT INTO `employee_portal`.`job_details` (`job_detail_id`, `emp_code`, `job_code`, `curr_proj_id`) VALUES (2, 'E18/0000', 3, 1);
+
+INSERT INTO `employee_portal`.`job_details` (`job_detail_id`, `emp_code`, `job_code`, `reproting_mgr`, `team_lead`, `curr_proj_id`) VALUES (3, 'E18/0001', 1, 'E18/0000', 'E18/0000', 1);
+
+drop database employee_portal;
