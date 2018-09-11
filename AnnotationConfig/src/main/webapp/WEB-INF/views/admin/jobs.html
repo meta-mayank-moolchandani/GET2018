@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<a th:href = "@{jobs/add}">add project</a>
+<a th:href = "@{jobs/add}">add jobs</a>
 <div class="container">
 
      <div th:if="${not #lists.isEmpty(jobs)}">
-        <h2>All projects</h2>
+        <h2>All jobs</h2>
         <table class="table table-striped">
             <tr>
                 <th>Id</th>

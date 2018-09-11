@@ -51,8 +51,6 @@ public class AdminController {
 
 	@RequestMapping(path = "/projects", method = RequestMethod.GET)
 	public String getAllprojects(Model model) {
-		System.out.println("called: /projects (GET): response: admin/projects");
-		
 		model.addAttribute("projects", projectService.getAllProjects());
 		return "admin/projects";
 	}
@@ -60,17 +58,12 @@ public class AdminController {
 
 	@RequestMapping(path = "/projects/add", method = RequestMethod.GET)
 	public String createproject(Model model) {
-		System.out.println("called: /project/add (GET): response: admin/editProject");
-		
-		
 		model.addAttribute("project", new Project());
 		return "admin/editProject";
 	}
 
 	@RequestMapping(path = "/projects", method = RequestMethod.POST)
 	public String saveproject(@ModelAttribute("project") Project project){
-		System.out.println("called: /projects (POST) : response: admin/editProject(redirect)");
-		
 		if(project!= null && project.getId() == null) {
 			projectService.createProject(project);	
 		}else {
@@ -82,8 +75,6 @@ public class AdminController {
 
 	@RequestMapping(path = "/projects/edit", method = RequestMethod.GET)
 	public String editproject(Model model, @RequestParam("id") Long id) {
-		System.out.println("called:/projects/edit(GET) response: admin/editProject");
-		
 		model.addAttribute("project", projectService.getProjectById(id));
 		return "admin/editProject";
 	}
@@ -103,17 +94,12 @@ public class AdminController {
 	
 	@RequestMapping(path = "/jobs/add", method = RequestMethod.GET)
 	public String createjob(Model model) {
-		System.out.println(" job called: /project/add (GET): response: admin/editProject");
-		
-		
 		model.addAttribute("job", new JobTitle());
 		return "admin/editJob";
 	}
 
 	@RequestMapping(path = "/jobs", method = RequestMethod.POST)
 	public String saveJob(@ModelAttribute("job") JobTitle jobTitle){
-		System.out.println("jobs called: /projects (POST) : response: admin/editProject(redirect)");
-		
 		if(jobTitle!= null && jobTitle.getId() == 0) {
 			jobTitleService.createJobTitle(jobTitle);	
 		}else {
@@ -124,16 +110,12 @@ public class AdminController {
 
 	@RequestMapping(path = "/jobs", method = RequestMethod.GET)
 	public String getAlljobs(Model model) {
-		System.out.println("called jobs: /projects (GET): response: admin/projects");
-		
 		model.addAttribute("jobs", jobTitleService.getAllJobTitle());
 		return "admin/jobs";
 	}
 
 	@RequestMapping(path = "/jobs/edit", method = RequestMethod.GET)
 	public String editJob(Model model, @RequestParam("id") int id) {
-		System.out.println("called:/projects/edit(GET) response: admin/editProject");
-		
 		model.addAttribute("job", jobTitleService.getJobTitleById(id));
 		return "admin/editjob";
 	}
@@ -179,7 +161,6 @@ public class AdminController {
 		model.addAttribute("projects",projectService.getAllProjects());
 		model.addAttribute("teamLeaders", employeeService.getTeamLeaders());
 		model.addAttribute("managers", employeeService.getManagers());
-		System.out.println(employeeService.getManagers().get(0).getFirstName());
 		return "admin/addEmployee";
 	}
 	

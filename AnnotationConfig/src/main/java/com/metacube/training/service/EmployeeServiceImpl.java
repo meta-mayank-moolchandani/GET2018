@@ -13,8 +13,8 @@ import com.metacube.training.model.Employee;
 import com.metacube.training.service.interfaces.EmployeeService;
 
 @Service
-public class EmployeeServiceImpl implements EmployeeService{
-	
+public class EmployeeServiceImpl implements EmployeeService {
+
 	@Autowired
 	private EmployeeDAO employeeDAO;
 
@@ -35,24 +35,34 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employee.setEmpCode(getGeneratedEmployeeCode());
 		return employeeDAO.createEmployee(employee);
 	}
-	
+
 	private String getGeneratedEmployeeCode() {
-		String lastEmpCode = employeeDAO.getLastAddedEmployee().getEmpCode();
+
+		Employee lastEmployee = employeeDAO.getLastAddedEmployee();
 		String newGeneratedCode = "";
-		String year = (Calendar.getInstance().get(Calendar.YEAR) + "").substring(2);
+		String year = (Calendar.getInstance().get(Calendar.YEAR) + "")
+				.substring(2);
 		NumberFormat nf = new DecimalFormat("0000");
 
-		if (lastEmpCode == null || "".equals(lastEmpCode)) {
+		try {
+			String lastEmpCode = lastEmployee.getEmpCode();
+			if (lastEmpCode == null || "".equals(lastEmpCode)) {
+
+				newGeneratedCode = "E" + year + "/" + nf.format(0);
+			} else {
+				int integerCode = Integer.parseInt(lastEmpCode.split("/")[1]);
+				newGeneratedCode = "E" + year + "/"
+						+ nf.format(integerCode + 1);
+			}
+
+		} catch (Exception e) {
 			newGeneratedCode = "E" + year + "/" + nf.format(0);
-		} else {
-			int integerCode = Integer.parseInt(lastEmpCode.split("/")[1]);
-			newGeneratedCode = "E" + year + "/" + nf.format(integerCode+1);
 		}
 
 		return newGeneratedCode;
 
 	}
-	
+
 	@Override
 	public List<Employee> getTeamLeaders() {
 		return employeeDAO.getTeamLeaders();
@@ -80,14 +90,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 				validateEmployeeFlag = true;
 			}
 		}
-		System.out.println("passwor:"+validateEmployeeFlag);
-		
-		if(validateEmployeeFlag){
-		return employeeInDatabase;
-		}else{
+		System.out.println("passwor:" + validateEmployeeFlag);
+
+		if (validateEmployeeFlag) {
+			return employeeInDatabase;
+		} else {
 			return null;
 		}
-		
+
 	}
 
 	@Override
@@ -96,5 +106,5 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employee.setEmpCode(empCode);
 		return employeeDAO.getEmployeeById(employee);
 	}
-	
+
 }

@@ -48,6 +48,7 @@ public class EmployeeController {
 			return new ModelAndView("employee/dashboard", "username", empCode);
 
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return new ModelAndView("employee/error");
 		}
 

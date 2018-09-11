@@ -58,7 +58,12 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 
 	@Override
 	public Employee getLastAddedEmployee() {
+		try{
+		
 		return jdbcTemplate.queryForObject(GET_LAST_EMPLOYEE, new EmployeeMapper());
+		}catch(Exception e){
+			return null;
+		}
 	}
 
 	@Override
@@ -75,10 +80,10 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 	
 	@Override
 	public boolean addJobDetails(Employee employee) {
-
 		return jdbcTemplate.update(SQL_JOB_DETAILS, employee.getEmpCode(),
-				employee.getJobTitle(), employee.getManager(),
-				employee.getTeamLeader(), employee.getProjectTitle()) > 0 ;
+				Integer.parseInt(employee.getJobTitle()), employee.getManager(),
+				employee.getTeamLeader(), Integer.parseInt(employee.getProjectTitle())) > 0 ;
+		
 	}	
 	
 	@Override

@@ -17,6 +17,8 @@ import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
+
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.metacube.training")
@@ -79,5 +81,7 @@ public class MvcWebConfig implements WebMvcConfigurer {
 		driverManagerDataSource.setDriverClassName(environment.getProperty(DRIVER));
 		return driverManagerDataSource;
 	}
+	
+
 
 }
