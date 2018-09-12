@@ -35,6 +35,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     
     private final String SQL_GET_EMPLOYEE_BY_ID = "SELECT * FROM employee WHERE emp_code = ?"; 
     
+    private final String UPDATE_EMPLOYEE_PASSWORD = "UPDATE `employee_portal`.`employee` SET `password`= ? WHERE `emp_code`= ?;";
 	
     @Override
 	public List<Employee> getAllEmployee() {
@@ -95,6 +96,11 @@ public class EmployeeDAOImpl implements EmployeeDAO{
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	@Override
+	public boolean updateEmployeePassword(String newPassword, String empCode) {
+		return jdbcTemplate.update(UPDATE_EMPLOYEE_PASSWORD,newPassword,empCode)>0;
 	}		
 	
 

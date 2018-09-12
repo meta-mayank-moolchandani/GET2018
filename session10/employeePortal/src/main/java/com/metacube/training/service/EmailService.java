@@ -18,10 +18,11 @@ public class EmailService {
 	
 	public void sendEmail(User user){
 		SimpleMailMessage mail = new SimpleMailMessage();
+		
 		mail.setTo(user.getEmailAddress());
 		mail.setFrom("xyz@xyz.com");
 		mail.setSubject("FORGET PASSWORD");
-		String message = "Hello " + user.getFirstName()+" " + user.getLastname() +"\n" + "your Password is: " + user.getPassword();
+		String message = "Hello " + user.getFirstName()+" " + user.getLastname() +"\n" + "please click below link to reset your password:\n\n" + user.getAppUrl();
 		mail.setText(message);
 		javaMailSender.send(mail);
 	}

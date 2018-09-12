@@ -13,5 +13,6 @@ public interface EmployeeDAO {
 	List<Employee> getManagers();
 	boolean addJobDetails(Employee employee);
 	Employee getEmployeeById(Employee employee);
+	boolean updateEmployeePassword(String newPassword, String empCode);
 	
 }

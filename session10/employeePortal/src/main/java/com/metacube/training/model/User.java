@@ -22,6 +22,21 @@ public class User {
 	private String firstName;
 	private String lastname;
 	private String emailAddress;
+	private String empCode;
+	public String getAppUrl() {
+		return appUrl;
+	}
+	public void setAppUrl(String appUrl) {
+		this.appUrl = appUrl;
+	}
+	private String appUrl;
+	
+	public String getEmpCode() {
+		return empCode;
+	}
+	public void setEmpCode(String empCode) {
+		this.empCode = empCode;
+	}
 	public String getPassword() {
 		return password;
 	}

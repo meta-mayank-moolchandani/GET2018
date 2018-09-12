@@ -13,5 +13,6 @@ public interface EmployeeService {
 	boolean addJobDetails(Employee employee);
 	Employee getEmployeeById(Employee employee);
 	Employee getEmployeeByIdString(String empCode);
+	boolean updateEmployeePassword(String newPassword, String empCode);
 
 }
