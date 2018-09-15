@@ -196,8 +196,12 @@ public class AdminController {
 		model.addAttribute("managers", employeeService.getManagers());
 		
 		List<EmployeeModel> employeeModel = employeeService.getAllEmployee();
-		System.out.println(employeeModel.get(0).getJobs().size());
-
+		
+		System.out.println(employeeModel.get(0).getJobs().get(0).getJobTitle());
+		
+		List<JobTitle> list = jobTitleService.getAllJobTitle();
+		System.out.println(list.get(0).getJobTitle());
+		System.out.println(list.get(0).getTeamLeaders().size());
 		
 		return "admin/addEmployee";
 	}
@@ -221,6 +225,7 @@ public class AdminController {
 			EmployeeModel employeeAndJobDetails = employeeService.getEmployeeByIdString(searchString);
 
 			model.addAttribute("employees", employeeAndJobDetails);
+			
 			return "admin/profile";
 		} catch (Exception e) {
 			return "employee/error2";

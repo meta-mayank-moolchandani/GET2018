@@ -19,7 +19,7 @@ public class JobDetails {
 	@Column(name = "emp_code")
 	private String empCode;
 	
-	@Column(name="job_code")
+	@Column(name="job_id")
 	private int jobCode;
 	
 	@Column(name = "reproting_mgr")

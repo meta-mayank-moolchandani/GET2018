@@ -2,6 +2,7 @@ package com.metacube.training.service.interfaces;
 
 import java.util.List;
 
+import com.metacube.training.model.EmployeeModel;
 import com.metacube.training.model.Skill;
 
 public interface SkillService {
@@ -10,4 +11,5 @@ public interface SkillService {
 
 	boolean createSkill(Skill skill);
 
+	List<EmployeeModel> getEmployeesBySkills(String skill);
 }

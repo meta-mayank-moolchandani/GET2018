@@ -7,8 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -17,17 +15,19 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Where;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "employee")
 public class EmployeeModel {
 	
-	@Id
+/*	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+*/	
+	@Id
 	@Column(name = "emp_code")
 	private String empCode;
 	
@@ -65,17 +65,23 @@ public class EmployeeModel {
 	
 	@Column(name = "enabled")
 	private boolean isEnabled;
-	
-	
-	
-    @ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+
+	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     @JoinTable(
         name = "job_details",
         joinColumns = { @JoinColumn(name = "emp_code") },
-        inverseJoinColumns = { @JoinColumn(name = "job_code") }
-    ) 
+        inverseJoinColumns = { @JoinColumn(name = "job_id") }
+    )
+	@Where(clause = "job_title = 'Team Leader'") 
 	private List<JobTitle> jobs;
+	
 
+	
+	@ManyToMany(mappedBy = "teamLeaders")
+    private List<JobTitle> jobTitle;
+
+	@ManyToMany(mappedBy = "employeesSkills")
+    private List<Skill> skills;
 	
 	public String getEmpCode() {
 		return empCode;
@@ -150,13 +156,13 @@ public class EmployeeModel {
 		this.isEnabled = isEnabled;
 	}
 	
-	public int getId() {
+/*	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-
+*/
 	public List<JobTitle> getJobs() {
 		return jobs;
 	}

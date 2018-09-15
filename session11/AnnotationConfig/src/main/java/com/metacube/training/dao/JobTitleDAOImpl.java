@@ -3,6 +3,7 @@ package com.metacube.training.dao;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.sql.DataSource;
@@ -51,12 +52,37 @@ public class JobTitleDAOImpl implements JobTitleDAO {
 
 	@Override
 	public boolean deleteJobTitle(int id) {
-		return jdbcTemplate.update(SQL_DELETE_JOB_TITLE, id) > 0;
-	}
+		
+		Session session = sessionFactory.openSession();
+		Transaction tx = null;
+		
+		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+		
+		CriteriaDelete<JobTitle> deleteCriteria = criteriaBuilder.createCriteriaDelete(JobTitle.class);
+        Root<JobTitle> jobTitleRoot = deleteCriteria.from(JobTitle.class);
+        deleteCriteria.where(criteriaBuilder.equal(jobTitleRoot.get("job_id"), id));
+        
+ 	
+        try{
+			tx = session.beginTransaction();
+			session.createQuery(deleteCriteria).executeUpdate();
+			tx.commit();
+		}catch(HibernateException e){
+			if(tx!=null)
+				tx.rollback();
+			e.printStackTrace();
+			return false;
+		}finally{
+			session.close();
+		}
+        
+        return true;	
+     }
 
 	@Override
 	public boolean updateJobTitle(JobTitle jobTitle) {
-		return jdbcTemplate.update(SQL_UPDATE_JOB_TITLE, jobTitle.getId()) > 0;
+		sessionFactory.getCurrentSession().update(jobTitle);
+		return true;
 
 	}
 

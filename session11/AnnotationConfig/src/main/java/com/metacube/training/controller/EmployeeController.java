@@ -1,5 +1,7 @@
 package com.metacube.training.controller;
 
+import java.util.Arrays;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,15 +16,23 @@ import org.springframework.web.servlet.ModelAndView;
 import com.metacube.training.model.EmployeeAndJobDetails;
 import com.metacube.training.model.EmployeeModel;
 import com.metacube.training.service.interfaces.EmployeeService;
+import com.metacube.training.service.interfaces.EmployeeSkillService;
+import com.metacube.training.service.interfaces.SkillService;
 
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private SkillService SkillService;
 
 	@Autowired
 	HttpSession session;
+	
+	@Autowired
+	private EmployeeSkillService employeeSkillService;
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Model model) {
@@ -87,4 +97,27 @@ public class EmployeeController {
 			return "employee/error2";
 		}
 	}
+	
+	@RequestMapping(path = "/addSkill", method = RequestMethod.GET)
+	public ModelAndView search(ModelAndView modelAndView) {
+	
+		modelAndView.addObject("skillList",SkillService.getAllSkills());
+		modelAndView.addObject("skills",new String[10]);
+		modelAndView.setViewName("employee/addSkill");
+		return modelAndView;
+	}
+	
+	@RequestMapping(path = "/addSkill", method = RequestMethod.POST)
+	public ModelAndView search(ModelAndView modelAndView,  @RequestParam("skills") String skills[], HttpServletRequest request) {
+		System.out.println("sdsadsad"+Arrays.toString(skills));
+		System.out.println(skills[0]);
+		modelAndView.setViewName("employee/dashboard");
+		employeeSkillService.addSkillsToEmployee(request.getSession().getAttribute("empCode").toString(), skills);
+
+		return modelAndView;
+	}
+
+
+	
+
 }

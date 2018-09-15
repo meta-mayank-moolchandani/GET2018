@@ -62,7 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	@Override
-	public List<EmployeeAndJobDetails> getManagers() {
+	public List<EmployeeModel> getManagers() {
 		return employeeDAO.getManagers();
 	}
 

@@ -14,7 +14,7 @@ public interface EmployeeService {
 
 	public List<EmployeeModel> getTeamLeaders();
 
-	public List<EmployeeAndJobDetails> getManagers();
+	public List<EmployeeModel> getManagers();
 
 	boolean addJobDetails(EmployeeAndJobDetails employeeAndJobDetails);
 

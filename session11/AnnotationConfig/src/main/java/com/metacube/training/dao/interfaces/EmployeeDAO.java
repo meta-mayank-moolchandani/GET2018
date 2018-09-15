@@ -1,8 +1,6 @@
 package com.metacube.training.dao.interfaces;
 
 import java.util.List;
-
-import com.metacube.training.model.EmployeeAndJobDetails;
 import com.metacube.training.model.EmployeeModel;
 import com.metacube.training.model.JobDetails;
 
@@ -18,7 +16,9 @@ public interface EmployeeDAO {
 
 	List<EmployeeModel> getTeamLeaders();
 
-	List<EmployeeAndJobDetails> getManagers();
+	List<EmployeeModel> getManagers();
+	
+
 
 	EmployeeModel getEmployeeById(EmployeeModel employeeModel);
 
