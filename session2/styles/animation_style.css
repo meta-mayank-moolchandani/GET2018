@@ -1,0 +1,43 @@
+#main{
+    height: 150px;
+    width:150px;
+    transform:translate(400px,100px);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.square{
+    height:75px;
+    width:75px;
+    animation: square_animation 1s infinite;
+    position:absolute;
+
+}
+
+#square1{ 
+    background-color: #FAC256;
+    animation-delay: 0.75s;
+}
+
+#square2{
+    background-color: #1F8DF4;
+    animation-delay:0.50s;
+}
+
+#square3{
+    background-color: #F95565;
+    animation-delay: 0.25s;
+}
+
+#square4{
+    background-color: #783FE0;
+    animation-delay: 0s;
+}
+
+@keyframes square_animation{
+    0%   {left:0px; top:0px;}
+    25%  {left:0px; top:75px;}
+    50%  {left:75px; top:75px;}
+    75%  {left:75px; top:0px;}
+    100% {left:0px; top:0px;}
+}
