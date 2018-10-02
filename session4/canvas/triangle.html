@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Triangle Canvas Example</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+ 
+    <script>
+            var canvasElement = document.querySelector("#myCanvas");
+    var context = canvasElement.getContext("2d");
+    
+    // the triangle
+    context.beginPath();
+    context.moveTo(250,3);
+    context.lineTo(10, 480);
+    context.lineTo(480, 480);
+    context.closePath();
+    
+    // the outline
+    context.lineWidth = 3;
+    context.strokeStyle = '#666666';
+    context.stroke();
+    
+    // the fill color
+    context.fillStyle = "#FFCC00";
+        context.fill();
+ 
+    </script>
+ 
+</body>
+</html>
