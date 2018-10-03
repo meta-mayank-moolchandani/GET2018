@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./style/blog_style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+    <header id = "header" class="blog-header pt-3 container mb-3">
+        <div class="row flex-nowrap justify-content-between align-items-center mb-2">
+            <div class='col-4'>
+                <a class='text-muted' href="#">Subscribe</a>
+            </div>
+            <div class="col-4 text-center pt-2">
+                <a href="#" class='header-logo text-dark'>Large</a>
+            </div>
+            <div class="col-4 d-flex flex-nowrap justify-content-end align-items-center">
+                    <a href="#" class="text-muted">
+                        <svg xmlns="http://www.w3.org/2000/svg" 
+                            width="20" height="20" viewBox="0 0 24 24" 
+                            fill="none" stroke="currentColor" 
+                            stroke-width="2" stroke-linecap="round" 
+                            stroke-linejoin="round" class="mx-3">
+                                <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                                <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
+                        </svg>
+                    </a>
+                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>                
+            </div>
+    </header>
+
+    <nav class='container border-top'>
+        <ul class="navbar-nav flex-row justify-content-around flex-wrap">
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">World</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">U.S.</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Technology</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Design</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Culture</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Business</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Politics</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Opinion</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Science</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Health</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Style</a></li>
+            <li class="nav-item p-1"><a class="nav-link text-muted" href="#">Travel</a></li>
+        </ul>        
+    </nav>
+
+    <div class="container my-5">
+        <div class="jumbotron text-white rounded bg-dark">
+            <div class="row">
+                <div class="col-sm-6 col-lg-6">
+                    <h1 class="font-italic font-weight-bold" id="cover-heading">Title of a longer featured blog post</h1>
+                    <p id="cover-content-para">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
+                    <p><strong>Continue reading...</strong></p>
+                </div>    
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+       <div class="card-deck"> 
+            <div class="card">
+                <div class="row">
+                    <div class="card-body col-7">
+                            <p class="text-primary"><strong>World</strong></p>
+                            <h3 class="card-title m-0">Featured Post</h3>
+                            <p class="text-secondary">Nov12</p>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="text-primary">Continue Reading</p>
+                    </div>    
+                    <div class="col-4 card-image-container">
+                        <img class="card-img-top card-image img-thumbnail" src="./images/logo.jpg" alt="Card image cap">
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                    <div class="row">
+                        <div class="card-body col-7">
+                                <p class="text-primary"><strong>World</strong></p>
+                                <h3 class="card-title m-0">Featured Post</h3>
+                                <p class="text-secondary">Nov12</p>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="text-primary">Continue Reading</p>
+                        </div>    
+                        <div class="col-4 card-image-container">
+                            <img class="card-img-top card-image img-thumbnail" src="./images/logo.jpg" alt="Card image cap">
+                        </div>
+                    </div>            
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-4" id = "sample-blog-post">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <h1 class="font-italic font-weight-bold">From the Firehose</h1>
+                <hr>
+                <h1 class = "blog-sample-title" class="mt-4">Sample blog post</h1>
+                <p class="text-muted" id = "blog-sample-date">January 1, 2014 by <a href = "#">Mark</a></p>
+                <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+                <hr>
+                <p>Cum sociis natoque penatibus et magnis<a href = "#"> dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+                <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p>Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <h1 class="blog-sample-title">Heading</h1>
+                <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <h1 class="blog-sample-title">Sub-heading</h1>
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <p>Example code block</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
+                <h1 class="blog-sample-title">Sub-heading</h1>
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <ul>
+                    <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+                    <li>Donec id elit non mi porta gravida at eget metus.</li>
+                    <li>Nulla vitae elit libero, a pharetra augue.</li>
+                </ul>
+                <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>    
+                <ol>
+                    <li><p>Vestibulum id ligula porta felis euismod semper.</p></li>
+                    <li><p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p></li>
+                    <li><p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p></li>
+                </ol>
+                <p class='mb-5'>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
+
+                <h1 class = "blog-sample-title" class="mt-5">Another blog post</h1>
+                <p class="text-muted" id = "blog-sample-date">January 1, 2014 by <a href = "#">Mark</a></p>
+                <p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+                <hr>
+                <p>Cum sociis natoque penatibus et magnis<a href = "#"> dis parturient montes</a>, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
+                <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p>Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <p class="mb-5">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                
+                <h1 class="blog-sample-title mt-5">New feature</h1>
+                <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <ul>
+                    <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+                    <li>Donec id elit non mi porta gravida at eget metus.</li>
+                    <li>Nulla vitae elit libero, a pharetra augue.</li>
+                </ul>
+                <p>Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <p class="mb-5">Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+                <nav class="blog-pagination">
+                        <a class="btn btn-outline-primary" href="#">Older</a>
+                        <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+                </nav> 
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 ml-5">
+                <div class="container bg-light py-5">
+                    <h1 class="font-italic">About</h1>
+                    <p>Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                </div>
+                <div class="p-3">
+                        <h4 class="font-italic">Archives</h4>
+                        <ol class="list-unstyled mb-0">
+                          <li><a href="#">March 2014</a></li>
+                          <li><a href="#">February 2014</a></li>
+                          <li><a href="#">January 2014</a></li>
+                          <li><a href="#">December 2013</a></li>
+                          <li><a href="#">November 2013</a></li>
+                          <li><a href="#">October 2013</a></li>
+                          <li><a href="#">September 2013</a></li>
+                          <li><a href="#">August 2013</a></li>
+                          <li><a href="#">July 2013</a></li>
+                          <li><a href="#">June 2013</a></li>
+                          <li><a href="#">May 2013</a></li>
+                          <li><a href="#">April 2013</a></li>
+                        </ol>
+                </div>
+            
+                <div class="p-3">
+                    <h4 class="font-italic">Elsewhere</h4>
+                    <ol class="list-unstyled">
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                    </ol>
+                </div>    
+
+            </div>
+    
+        </div>
+    </div>
+
+    
+    <footer id="blog-footer">
+            <p>Blog template built for <a href="#">Bootstrap</a> by <a href="#">@mdo</a></p>
+            <p>
+              <a href="#">Back to top</a>
+            </p>
+    </footer>
+ 
+
+
+
+</body>
+</html>

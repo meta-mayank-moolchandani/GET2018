@@ -1,0 +1,45 @@
+.blog-header{
+    line-height: 1;
+}
+.header-logo{
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-size: 2.25rem;
+    font-weight: 550;
+}
+
+#cover-heading{
+    font-size: 2.8rem !important;
+}
+#cover-content-para{
+    font-size:1.25rem !important;
+}
+
+.card-image{
+    height:100%;
+}
+.card-image-container{
+    padding-right:0 !important;
+}
+.m-0{
+    margin:0 !important;
+}
+.blog-sample-title{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:50px !important;
+    font-weight:700;
+}
+
+#blog-sample-date{
+    font-size:20px !important;
+}
+#sample-blog-post p{
+    font-size: 18px;
+}
+
+#blog-footer{
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+}
