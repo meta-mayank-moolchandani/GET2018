@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href = "style/contact_us.css">
+<script src="js/script.js"></script>
+</head>
+<body>
+
+<form method="post" action = "form.html" id = 'contact-us'>
+  <div id = "form-input-elements">  
+        <p>Contact Us Today!</p>
+        <div class="input-container">
+            <div class="label">
+                <label>First Name</label>
+            </div>
+            <i class="fa fa-user icon"></i>
+            <input class="input-field" type="text" required placeholder="First Name" name="user_name" pattern="[A-Za-z]{3,}">
+        </div>
+
+        <div class="input-container">
+            <div class="label">
+                <label>Last Name</label>
+            </div>
+            <i class="fa fa-envelope icon"></i>
+            <input class="input-field"  type="text" required placeholder="Last Name" name="last_name" pattern="[A-Za-z]{3,}">
+        </div>
+        
+        <div class="input-container">
+            <div class="label">
+                <label>E-mail</label>
+            </div>
+            <i class="fa fa-envelope icon"></i>
+            <input class="input-field" type="email" placeholder="E-Mail Address" name="password" required>
+        </div>
+
+        <div class="input-container">
+                <div class="label">
+                    <label>Phone #</label>
+                </div>
+                <i class="fa fa-phone icon"></i>
+                <input class="input-field" type="text" required placeholder="(852)555-1212" name="phone" pattern="\d{10}">
+        </div>
+        
+            <div class="input-container">
+                <div class="label">
+                    <label>Address</label>
+                </div>
+                <i class="fa fa-home icon"></i>
+                <input class="input-field"  type="text"  placeholder="Address" name="address">
+            </div>
+            
+            <div class="input-container">
+                <div class="label">
+                    <label>City</label>
+                </div>
+                <i class="fa fa-home icon"></i>
+                <input class="input-field" type="password" placeholder="City" name="city" required>
+            </div>
+
+            <div class="input-container">
+                <div class="label">
+                    <label>State</label>
+                </div>
+                <i class="fa fa-server icon"></i>
+                <select name="state" id = "state" onchange="stateChange(this.value)">
+                    <option selected="Please Select Your State" disabled="disabled">Please Select Your State</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Hariyana">Hariyana</option>
+                </select>
+            </div>
+            <!-- <div class="input-container">
+                <div class="label">
+                    <label>Zip Code</label>
+                </div>
+                <i class="fa fa-home icon"></i>
+                <input class="input-field"  type="text" required placeholder="Zip Code" name="zipcode" pattern = "\d{6}">
+            </div>
+            
+            <div class="input-container">
+                <div class="label">
+                    <label>Website or domain name</label>
+                </div>
+                <i class="fa fa-globe icon"></i>
+                <input class="input-field" type="text" placeholder="Website or domain name" name="domain" required pattern = {a-zA-Z}{2,}>
+            </div>
+
+            <div class="input-container" id = "radio">
+                <div class="label">
+                    <label>Do you have hosting</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="question" value="true" required>Yes
+                    <input type="radio" name="question" value="false"> No
+                </div>        
+            </div>
+
+            <div class="input-container" id = "text-area">
+                <div class="label">
+                    <label>Project Description</label>
+                </div>
+                <i class="fa fa-user icon"></i>
+                <textarea class="input-field" type="text-area" required placeholder="Project Description" name="project_description" pattern="[A-Za-z]{3,}" rows="5" cols="3"></textarea>
+            </div> -->
+            <button type="submit" class="btn">Send<i class="fa fa-paper-plane btn-icon"></i></button>
+    </div>  
+</form>
+
+</body>
+</html>
+
+
