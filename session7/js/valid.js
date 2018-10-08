@@ -9,10 +9,14 @@ function checkValidity(){
      if(document.getElementById("form-input-elements").contains(document.getElementById("zipcode"))){
      checkZipCode(document.getElementById("zipcode-input"));}
      showMessage();
+	 
+if(errorMap.size!=0) 
+{return false;}
 
      if(errorMap.size===0){
         var formElements = document.getElementById("contact-us");
         if(localStorage){
+			debugger;
             localStorage.clear();
         for (var i = 0; i < formElements.elements.length; i++) {
                 localStorage.setItem(formElements.elements[i].name,formElements.elements[i].value);   
@@ -20,7 +24,9 @@ function checkValidity(){
         }else{
         console.log("browser dosent support localStorage");
         }
-    }    
+    }  
+
+return true;	
 }
 
 function deleteEntry(key){
