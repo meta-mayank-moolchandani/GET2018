@@ -1,0 +1,30 @@
+<section id = 'filter-categories' class='py-2'>
+    <div class="row">
+        <div class="col-3">
+            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a class="nav-link active text-secondary border-bottom" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" ng-model='search.category' ng-value=''>All Categories</a>
+                <a class="nav-link text-secondary border-bottom" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" ng-model='search.category' ng-value='fruits' >Bread</a>
+                <a class="nav-link text-secondary border-bottom" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Dairy</a>
+                <a class="nav-link text-secondary border-bottom" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Fruits</a>
+                <a class="nav-link text-secondary border-bottom" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Vegitables</a>
+            </div>
+        </div>
+        
+        <div class="col-9">
+            <div class="row">
+
+                <div class="col-md-5 py-3"  ng-repeat = 'product in $ctrl.listOfProducts | filter:search.category'>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" ng-src="{{product.imgUrl}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <p class="card-text">${{product.price}}</p>
+                            <a href="#" class="btn btn-secondary btn-cart">Add To Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+ </section>  

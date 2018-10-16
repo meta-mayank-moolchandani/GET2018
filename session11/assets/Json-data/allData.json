@@ -1,0 +1,196 @@
+{
+    "all": [
+        {
+            "id": 1,
+            "name": "Apple",
+            "price": 45,
+            "description": "This is apple",
+            "imgUrl": "assets/Image/Fruit/apple.jpeg",
+            "category": "fruits"
+        },
+        {
+            "id": 2,
+            "name": "Banana",
+            "price": 45,
+            "description": "This is Banana",
+            "imgUrl": "assets/Image/Fruit/banana.jpeg",
+            "category": "fruits"
+        },
+        {
+            "id": 3,
+            "name": "Pomegranate",
+            "price": 45,
+            "description": "This is Pomegranate",
+            "imgUrl": "assets/Image/Fruit/pomegranate.jpeg",
+            "category": "fruits"
+        },
+        {
+            "id": 4,
+            "name": "Strawberry",
+            "price": 45,
+            "description": "This is strawberry",
+            "imgUrl": "assets/Image/Fruit/strawberry.jpeg",
+            "category": "fruits"
+        },
+        {
+            "id": 5,
+            "name": "Water-melon",
+            "price": 45,
+            "description": "This is Water-melon",
+            "imgUrl": "assets/Image/Fruit/water-melon.jpeg",
+            "category": "fruits"
+        },
+        {
+            "id": 6,
+            "name": "Cabbage",
+            "price": 45,
+            "description": "This is cabbage",
+            "imgUrl": "assets/Image/Vegetable/cabbage.jpg",
+            "category": "vegetables"
+        },
+        {
+            "id": 7,
+            "name": "Cauliflower",
+            "price": 45,
+            "description": "This is cauliflower",
+            "imgUrl": "assets/Image/Vegetable/cauliflower.jpg",
+            "category": "vegetables"
+        },
+        {
+            "id": 8,
+            "name": "Corn",
+            "price": 45,
+            "description": "This is corn",
+            "imgUrl": "assets/Image/Vegetable/corn.jpg",
+            "category": "vegetables"
+        },
+        {
+            "id": 9,
+            "name": "Cosmos",
+            "price": 45,
+            "description": "This is cosmos",
+            "imgUrl": "assets/Image/Vegetable/cosmos.jpg",
+            "category": "vegetables"
+        },
+        {
+            "id": 10,
+            "name": "Loki",
+            "price": 45,
+            "description": "This is loki",
+            "imgUrl": "assets/Image/Vegetable/loki.jpg",
+            "category": "vegetables"
+        },
+        {
+            "id": 11,
+            "name": "Tomato",
+            "price": 45,
+            "description": "This is tomato",
+            "imgUrl": "assets/Image/Vegetable/tomato.png",
+            "category": "vegetables"
+        },
+        {
+            "id": 12,
+            "name": "Bread 1",
+            "price": 45,
+            "description": "This is apple",
+            "imgUrl": "assets/Image/Bread/bread1.jpg",
+            "category": "bread"
+        },
+        {
+            "id": 13,
+            "name": "Bread 2",
+            "price": 45,
+            "description": "This is Banana",
+            "imgUrl": "assets/Image/Bread/bread2.jpg",
+            "category": "bread"
+        },
+        {
+            "id": 14,
+            "name": "Bread 3",
+            "price": 45,
+            "description": "This is Pomegranate",
+            "imgUrl": "assets/Image/Bread/bread3.jpg",
+            "category": "bread"
+        },
+        {
+            "id": 15,
+            "name": "Hot Dog Bread",
+            "price": 45,
+            "description": "This is strawberry",
+            "imgUrl": "assets/Image/Bread/bread4.jpg",
+            "category": "bread"
+        },
+        {
+            "id": 16,
+            "name": "Toast Bread",
+            "price": 45,
+            "description": "This is Water-melon",
+            "imgUrl": "assets/Image/Bread/bread5.jpg",
+            "category": "bread"
+        },
+        {
+            "id": 17,
+            "name": "Bread 3",
+            "price": 45,
+            "description": "This is Pomegranate",
+            "imgUrl": "assets/Image/Bread/bread3.jpg",
+            "category": "bread"
+        },
+        {
+            "id": 18,
+            "name": "Hot Dog Bread",
+            "price": 45,
+            "description": "This is strawberry",
+            "imgUrl": "assets/Image/Bread/bread4.jpg",
+            "category": "bread"
+        },
+        {
+            "id": 19,
+            "name": "Toast Bread",
+            "price": 45,
+            "description": "This is Water-melon",
+            "imgUrl": "assets/Image/Bread/bread5.jpg",
+            "category": "bread"
+        },
+        {
+            "id": 20,
+            "name": "Milk",
+            "price": 45,
+            "description": "This is Pomegranate",
+            "imgUrl": "assets/Image/Dairy/Milk.jpeg",
+            "category": "dairy"
+        },
+        {
+            "id": 21,
+            "name": "Egg",
+            "price": 45,
+            "description": "This is strawberry",
+            "imgUrl": "assets/Image/Dairy/Egg.jpg",
+            "category": "dairy"
+        },
+        {
+            "id": 22,
+            "name": "PanCakes",
+            "price": 45,
+            "description": "This is Water-melon",
+            "imgUrl": "assets/Image/Dairy/panCakes.jpeg",
+            "category": "dairy"
+        },
+        {
+            "id": 23,
+            "name": "Cheese",
+            "price": 45,
+            "description": "This is Pomegranate",
+            "imgUrl": "assets/Image/Dairy/Cheese.jpeg",
+            "category": "dairy"
+        },
+        {
+            "id": 24,
+            "name": "Yogurt",
+            "price": 45,
+            "description": "This is strawberry",
+            "imgUrl": "assets/Image/Dairy/Yogurt.jpg",
+            "category": "dairy"
+        }
+    ]
+}

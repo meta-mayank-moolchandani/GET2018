@@ -1,0 +1,142 @@
+<html ng-app='shopping-cart'>
+
+<head>
+
+    <!--  -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="userStyle.css">-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <!-- link rel="stylesheet" href="Stylesheet/style.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+
+    <script src="app.module.js"></script>
+    <script src="all-product-list/product-list.module.js"></script>
+    <script src="all-product-list/product-list.component.js"></script>
+
+
+
+
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+<div class="container">
+    <header class='border-bottom'>
+        <div class="d-flex justify-content-between py-2">
+            <div class="px-2">
+                <a href = "#"><i class="fab fa-envira nav-icon"></i></a>
+                <a href = "#"><i class="fas fa-cart-plus nav-icon"></i><span class="badge badge-warning">0</span></a>
+            </div>
+            <div class="dropdown mr-5 px-2">
+                <a class="dropdown-toggle" id='header-user-name' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    John Doe
+                </a>
+                
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">Cart</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- <section id = 'filter-categories' class='py-2'>
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active text-secondary border-bottom" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">All Categories</a>
+                    <a class="nav-link text-secondary border-bottom" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Bread</a>
+                    <a class="nav-link text-secondary border-bottom" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Dairy</a>
+                    <a class="nav-link text-secondary border-bottom" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Fruits</a>
+                    <a class="nav-link text-secondary border-bottom" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Vegitables</a>
+                </div>
+            </div>
+            
+            <div class="col-9">
+                <div class="row">
+
+                    <div class="col-md-5 py-3">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="assets/Image/Bread/bread1.jpg" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">bread1</h5>
+                                <p class="card-text">$1</p>
+                                <a href="#" class="btn btn-secondary btn-cart">Add To Cart</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 py-3">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="assets/Image/Bread/bread1.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">bread1</h5>
+                                    <p class="card-text">$1</p>
+                                    <a href="#" class="btn btn-secondary btn-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                    </div>
+                    
+                    <div class="col-md-5 py-3">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="assets/Image/Bread/bread1.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">bread1</h5>
+                                    <p class="card-text">$1</p>
+                                    <a href="#" class="btn btn-secondary btn-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-md-5 py-3">
+                            <div class="card" style="width: 18rem;">
+                                <img class="card-img-top" src="assets/Image/Bread/bread1.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">bread1</h5>
+                                    <p class="card-text">$1</p>
+                                    <a href="#" class="btn btn-secondary btn-cart">Add To Cart</a>
+                                </div>
+                            </div>
+                    </div>                                        
+                    
+                </div>
+            </div>
+        
+        </div>
+     </section>   -->
+     <product-list></product-list>
+</div>
+
+
+
+</body>
+
+
+
+</html>
+
+
+<!-- <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">hahah</div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">.dsdsa</div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">asdasd</div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">dasd dsjakj</div>
+</div> -->
