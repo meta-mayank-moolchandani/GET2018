@@ -29,35 +29,35 @@
     <script src="all-product-list/product-list.module.js"></script>
     <script src="all-product-list/product-list.component.js"></script>
 
-
-
-
-
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 <div class="container">
-    <header class='border-bottom'>
-        <div class="d-flex justify-content-between py-2">
-            <div class="px-2">
-                <a href = "#"><i class="fab fa-envira nav-icon"></i></a>
-                <a href = "#"><i class="fas fa-cart-plus nav-icon"></i><span class="badge badge-warning">0</span></a>
-            </div>
-            <div class="dropdown mr-5 px-2">
-                <a class="dropdown-toggle" id='header-user-name' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    John Doe
-                </a>
-                
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Cart</a>
-                    <a class="dropdown-item" href="#">Log Out</a>
+        <header class='border-bottom'>
+                <div class="d-flex justify-content-between py-2">
+                    <div class="px-2">
+                        <a href = "#"><i class="fab fa-envira nav-icon"></i></a>
+                        <a href = "#"><i class="fas fa-cart-plus nav-icon"></i><span class="badge badge-warning">{{totalItemsInCart}}</span></a>
+                    </div>
+                    <div class="dropdown mr-5 px-2">
+                        <a class="dropdown-toggle" id='header-user-name' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            John Doe
+                        </a>
+                        
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Cart</a>
+                            <a class="dropdown-item" href="#">Log Out</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </header>
+        </header>
+            
+            
 
+    <!-- 
+ -->
 
     <!-- <section id = 'filter-categories' class='py-2'>
         <div class="row">

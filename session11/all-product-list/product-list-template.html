@@ -19,7 +19,18 @@
                         <div class="card-body">
                             <h5 class="card-title">{{product.name}}</h5>
                             <p class="card-text">${{product.price}}</p>
-                            <a href="#" class="btn btn-secondary btn-cart">Add To Cart</a>
+                            <!-- <div ng-switch = "isItemAdded"> -->
+                                <div ng-if='$ctrl.isItemAddedInCart(product.id)'>
+                                    <a href="#" class="btn btn-secondary btn-cart" ng-click = '$ctrl.addItemsToCart(product)'>Add To Cart</a>
+                                </div>
+                                <div class='d-flex justify-content-between' ng-if = '$ctrl.isItemAddedInCart(product.id)'>
+                                    <button class='btn btn-secondary'>-</button>
+                                    <p>1 Item in cart</p>
+                                    <button class='btn btn-secondary'>+</button>
+                                </div>    
+                            <!-- </div> -->
+                        
+                        
                         </div>
                     </div>
                 </div>
