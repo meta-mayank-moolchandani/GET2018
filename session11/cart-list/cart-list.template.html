@@ -1,0 +1,68 @@
+ 
+<section id="cartlist">
+    <div class="row py-2 mb-2 flex-wrap  justify-content-between align-items-end">
+		<div class="col-md-6 display-3 px-0">Items in the Cart</div>
+		<div class="col-md-3  p-3"><button class="col-md-12 btn-md btn-danger display-5 p-2" ng-click="clearTheCart()">Clear Cart</button></div>
+		<div class="col-md-3  p-3"><a href="./#!/checkout" ><button class="col-md-12 btn-md btn-success display-5 p-2" ng-if="$ctrl.itemInTheCart.length!=0" ng-click="">Check Out</button></a></div>
+    </div>
+    <div class="row mt-3">
+    	<div class="col-md-12 border d-flex flex-wrap justify-content-between">
+    		<div class="col-md-6 border">
+	    		 <h2 class="mt-3 d-flex justify-content-center">Product</h2>
+	    	</div>
+	    	<div class="col-md-1 border">
+	    		 <h2 class="mt-3 d-flex justify-content-center">Price</h2>
+	    	</div>
+	    	<div class="col-md-4 d-flex flex-wrap justify-content-center border">
+	    		<div class="d-flex flex-wrap ">
+	    			<h2 class="mt-3"> Quantity</h2>
+	    		</div>
+	    	</div>
+	    	<div class="col-md-1 border">
+	    		<h2 class=" mt-3 d-flex justify-content-center">Total</h2>
+	    	</div>
+	    </div>
+    </div>
+    <div class="row mt-3" ng-repeat="item in $ctrl.itemInTheCart">
+    	<div class="col-md-12 border d-flex flex-wrap justify-content-between" ng-if="item.quantity > 0">
+    		<div class="col-md-3 border-left">
+    			<img class="col-md-8" src="../images/{{item.url}}" alt="Card image cap">
+    		</div>
+	    	<div class="col-md-3 border-right">
+	    		 <h3 class="mt-3">{{item.name}}</h3>
+	    	</div>
+	    	<div class="col-md-1 justify-content-center border">
+	    		 <p class="mt-3">$ {{item.price}} {{item.id}}</p>
+	    	</div>
+	    	<div class="col-md-4 d-flex flex-wrap justify-content-center border">
+	    		<button class="btn-sm btn-success col-md-2 my-3" ng-click="decreaseItemQuantity(item)">-</button>
+	    		<div class="d-flex flex-wrap">
+	    			<span class="d-flex flex-wrap col-md-6 mt-3"> {{findProductQuantityInCart(item.id)}} </span>
+	    		</div>
+                <button class="btn-sm btn-success col-md-2 my-3" ng-click="increaseItemQuantity(item)">+</button>
+	    	</div>
+	    	<div class="col-md-1 border">
+	    		<p class=" mt-3">${{item.total}}
+	    	</div>
+	    </div>
+    </div>
+    <div class="row mt-3">
+    	<div class="col-md-12  d-flex flex-wrap justify-content-between">
+    		<div class="col-md-6 ">
+	    		 
+	    	</div>
+	    	<div class="col-md-1 ">
+	    		 <h2 class="mt-3 d-flex justify-content-center"></h2>
+	    	</div>
+	    	<div class="col-md-4 d-flex flex-wrap justify-content-center">
+	    		<div class="d-flex flex-wrap ">
+	    			<h2 class="mt-3"></h2>
+	    		</div>
+	    	</div>
+	    	<div class="col-md-1 border">
+	    		<h2 class=" mt-3 d-flex justify-content-center">{{totalAmount}}</h2>
+	    	</div>
+	    </div>
+    </div>
+</section>  
+

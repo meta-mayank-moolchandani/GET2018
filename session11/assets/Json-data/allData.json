@@ -195,19 +195,29 @@
   ],
   "cart": [
     {
+      "id": 1,
       "productId": 1,
-      "productQuantity": 7,
-      "id": 1
+      "productQuantity": 7
     },
     {
-      "productId": 2,
-      "productQuantity": 3,
-      "id": 2
-    },
-    {
+      "id": 2,
       "productId": 3,
+      "productQuantity": 5
+    },
+    {
+      "id": 3,
+      "productId": 4,
+      "productQuantity": 2
+    },
+    {
+      "id": 4,
+      "productId": 2,
+      "productQuantity": 1
+    },
+    {
+      "productId": 9,
       "productQuantity": 1,
-      "id": 3
+      "id": 5
     }
   ]
 }
