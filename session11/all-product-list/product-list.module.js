@@ -1,3 +1,3 @@
 'use strict';
 angular
-    .module('product-list',[]);
+    .module('product-list',['ngRoute','cartList']);

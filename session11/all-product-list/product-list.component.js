@@ -24,7 +24,10 @@ angular
                                 url:url+"/cart",
                                 data:{
                                     productId: product.id,
-                                    productQuantity: 1
+                                    productQuantity: 1,
+                                    productPrice: product.price,
+                                    productName: product.name,
+                                    productImage: product.imgUrl
                                 },
                                 dataType:'json'
                             });
@@ -36,7 +39,10 @@ angular
                                 data:{
                                     id:response.data.id,
                                     productId: product.id,
-                                    productQuantity: response.data[0].productQuantity+1
+                                    productQuantity: response.data[0].productQuantity+1,
+                                    productPrice: product.price,
+                                    productName: product.name,
+                                    productImage: product.imgUrl
                                 },
                                 dataType:'json'
                             });
@@ -57,9 +63,8 @@ angular
                                 }
                             });
                         }
-                });
-
-            }
+                    });
+                }
         
             hello();
             
@@ -81,7 +86,10 @@ angular
                             data:{
                                 id:response.data[0].id,
                                 productId: response.data[0].productId,
-                                productQuantity: response.data[0].productQuantity+1
+                                productQuantity: response.data[0].productQuantity+1,
+                                productPrice: response.data[0].productPrice,
+                                productName: response.data[0].productName,
+                                productImage: response.data[0].productImage
                             },
                             dataType:'json'
                         });
@@ -97,7 +105,11 @@ angular
                                 data:{
                                     id:response.data[0].id,
                                     productId: response.data[0].productId,
-                                    productQuantity: response.data[0].productQuantity-1
+                                    productQuantity: response.data[0].productQuantity-1,
+                                    productPrice: response.data[0].productPrice,
+                                    productName: response.data[0].productName,
+                                    productImage: response.data[0].productImage
+                                    
                                 },
                                 dataType:'json'
                             });

@@ -3,4 +3,4 @@
 
 
 angular
-    .module('shopping-cart',['product-list']);
+    .module('shopping-cart',['ngRoute','product-list','cartList','check-out','order-message','view-orders']);

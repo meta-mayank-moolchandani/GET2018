@@ -1,5 +1,5 @@
 angular.
-  module('productApp').
+  module('shopping-cart').
   config(['$locationProvider', '$routeProvider',
     function config($locationProvider, $routeProvider) {
       $locationProvider.hashPrefix('!');
@@ -11,9 +11,15 @@ angular.
          when('/cart', {
           template: '<cart-list></cart-list>'
         }).
-        when('/checkout', {
-          template: '<check-out></check-out>'
+        when('/checkOut', {
+         template: '<check-out></check-out>'
         }).
-        otherwise('/products');
+        when('/thanksForPlaceingTheOrder', {
+          template: '<order-message></order-message>'
+        }).
+        when('/viewOrders', {
+          template: '<view-orders></view-orders>'
+        }).  
+          otherwise('/products');
     }
   ]);
