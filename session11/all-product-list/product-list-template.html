@@ -1,19 +1,20 @@
 <section id = 'filter-categories' class='py-2'>
     <div class="row">
-        <div class="col-3">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active text-secondary border-bottom" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true" ng-model='search.category' ng-value=''>All Categories</a>
-                <a class="nav-link text-secondary border-bottom" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" ng-model='search.category' ng-value='fruits' >Bread</a>
-                <a class="nav-link text-secondary border-bottom" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Dairy</a>
-                <a class="nav-link text-secondary border-bottom" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Fruits</a>
-                <a class="nav-link text-secondary border-bottom" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Vegitables</a>
+        <aside class="col-3 py-3" style="width:18rem;">
+            <div class="list-group">
+            <button class="list-group-item list-group-item-action active" ng-click="SearchList=all">All categories</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Bread'}">Bread</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Dairy'}">Dairy</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Fruits'}">Fruits</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Seasonings and Spice'}">Seasonings and Spices</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Vegetables'}">Vegetables</button>
             </div>
-        </div>
+        </aside>
         
         <div class="col-9">
             <div class="row">
 
-                <div class="col-md-5 py-3"  ng-repeat = 'product in $ctrl.localProductList | filter:search.category'>
+                <div class="col-md-5 py-3"  ng-repeat = 'product in $ctrl.localProductList | filter:SearchList'>
                     <div class="card" style="width: 18rem;">
                         <img class="card-img-top" ng-src="{{product.imgUrl}}" alt="Card image cap">
                         <div class="card-body">
