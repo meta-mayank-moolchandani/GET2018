@@ -1,0 +1,40 @@
+<section id = 'filter-categories' class='py-2'>
+    <div class="row">
+        <aside class="col-3 py-3" style="width:18rem;">
+            <div class="list-group">
+            <button class="list-group-item list-group-item-action active" ng-click="SearchList=all">All categories</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Bread'}">Bread</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Dairy'}">Dairy</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Fruits'}">Fruits</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Seasonings and Spice'}">Seasonings and Spices</button>
+            <button class="list-group-item list-group-item-action" ng-click="SearchList={category:'Vegetables'}">Vegetables</button>
+            </div>
+        </aside>
+        
+        <div class="col-9">
+            <div class="row">
+
+                <div class="col-md-5 py-3"  ng-repeat = 'product in $ctrl.localProductList | filter:SearchList'>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" ng-src="{{product.imgUrl}}" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <p class="card-text">${{product.price}}</p>
+                            <div>
+                                <div class='d-flex justify-content-between' ng-if="product.isItemAddedToCart === true">
+                                    <button class='btn btn-secondary' ng-click="$ctrl.changeQuantityInCart(product.id,'-')">-</button>
+                                    <p>{{getProductQuantityFromCart(product.id)}} Item in cart</p>
+                                    <button class='btn btn-secondary' ng-click="$ctrl.changeQuantityInCart(product.id,'+')">+</button>
+                                </div>    
+                                <div ng-if="product.isItemAddedToCart === false">
+                                    <a href="#" class="btn btn-secondary btn-cart" ng-click = '$ctrl.addItemToLocalCart(product)'>Add To Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+ </section>  
