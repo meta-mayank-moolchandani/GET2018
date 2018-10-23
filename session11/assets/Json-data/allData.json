@@ -193,33 +193,8 @@
       "category": "dairy"
     }
   ],
-  "cart": [],
-  "orderDetails": [
-    {
-      "Name": "mayank",
-      "date": "2018-10-22T14:14:45.777Z",
-      "address1": "232,asad k",
-      "address2": "dsksdkasd",
-      "city": "sadsada",
-      "order": [
-        {
-          "id": 1,
-          "productId": 1,
-          "productQuantity": 2,
-          "productPrice": 45,
-          "productName": "Apple",
-          "productImage": "assets/Image/Fruit/apple.jpeg"
-        },
-        {
-          "id": 2,
-          "productId": 2,
-          "productQuantity": 2,
-          "productPrice": 45,
-          "productName": "Banana",
-          "productImage": "assets/Image/Fruit/banana.jpeg"
-        }
-      ],
-      "id": 1
-    }
-  ]
+  "cart": [
+
+  ],
+  "orderDetails": []
 }
